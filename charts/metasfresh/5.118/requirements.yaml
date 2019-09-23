@@ -1,0 +1,6 @@
+dependencies:
+  - name: metasfresh-db
+    version: 5.118
+  - name: metasfresh-app
+    version: 5.118
+    
