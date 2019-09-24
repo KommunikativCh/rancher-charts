@@ -1,7 +1,7 @@
 dependencies:
   - name: metasfresh-db
-    version: 5.118
+    version: ""
     repository: file://./charts/metasfresh-db
   - name: metasfresh-app
-    version: 5.118
+    version: ""
     repository: file://./charts/metasfresh-app
