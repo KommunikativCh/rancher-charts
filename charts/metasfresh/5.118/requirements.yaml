@@ -1,0 +1,4 @@
+dependencies:
+  - name: metasfresh-db
+    version: 5.118
+    repository: https://github.com/KommunikativCh/rancher-charts.git
