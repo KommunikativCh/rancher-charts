@@ -1,7 +1,0 @@
-dependencies:
-  - name: metasfresh-db
-    version: ""
-    repository: file://../charts/metasfresh-db
-  - name: metasfresh-app
-    version: ""
-    repository: file://../charts/metasfresh-app
