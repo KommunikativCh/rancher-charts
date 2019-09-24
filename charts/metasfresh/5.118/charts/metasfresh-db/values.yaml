@@ -38,7 +38,7 @@ networkPolicy:
 ## metasfresh-db parameters
 ##
 db:
-  port: 6379
+  port: 5432
   podLabels: {}
   ## metasfresh-db resource requests and limits
   ## ref: http://kubernetes.io/docs/user-guide/compute-resources/

@@ -1,0 +1,15 @@
+name: metasfresh
+version: 5
+appVersion: 5.118
+description: We do Open Source ERP - Fast, Flexible & Free Software to scale your Business.
+keywords:
+- metasfresh
+- erp
+home: http://metasfresh.com/
+icon: https://avatars0.githubusercontent.com/u/13364239?s=200&v=4
+sources:
+- https://https://github.com/metasfresh
+maintainers:
+- name: ??
+  email: ??
+engine: gotpl

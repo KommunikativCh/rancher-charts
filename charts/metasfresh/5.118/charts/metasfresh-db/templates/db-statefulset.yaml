@@ -52,7 +52,6 @@ spec:
       - name: {{ template "metasfresh-db.fullname" . }}
         image: "{{ template "metasfresh-db.image" . }}"
         imagePullPolicy: {{ default "" .Values.image.pullPolicy | quote }}
-        {{- if .Values.master.args }}
         ports:
         - name: db
           containerPort: {{ .Values.db.port }}
