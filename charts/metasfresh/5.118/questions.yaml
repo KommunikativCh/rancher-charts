@@ -1,0 +1,23 @@
+categories:
+- KeyValue
+- Database
+questions:
+- variable: db.persistence.enabled
+  default: "false"
+  description: "Use persistent storage"
+  type: boolean
+  required: true
+  label: Persistent Volume Enabled
+  show_subquestion_if: true
+  group: "metasfresh-db Settings"
+  subquestions:
+  - variable: db.persistence.size
+    default: "8Gi"
+    description: "Persistent volume size"
+    type: string
+    label: Persistent Volume Size
+  - variable: db.persistence.storageClass
+    default: "storage-metasfresh-db"
+    description: "If undefined or null, uses the default StorageClass. Defaults to null."
+    type: storageclass
+    label: Default Storage Class
