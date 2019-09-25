@@ -8,3 +8,11 @@ metadata:
     chart: {{ template "db.chart" . }}
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
+spec:
+  ports:
+  - name: db
+    port: 5432
+    targetPort: db
+  selector:
+    app: {{ template "db.name" . }}
+    release: "{{ .Release.Name }}"
