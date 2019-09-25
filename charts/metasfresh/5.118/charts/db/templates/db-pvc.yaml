@@ -6,6 +6,9 @@ spec:
   accessModes:
     - ReadWriteOnce
   volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 8Gi
   storageClassName: {{ .Values.db.persistence.storageClass | quote }}
   selector:
     matchLabels:
