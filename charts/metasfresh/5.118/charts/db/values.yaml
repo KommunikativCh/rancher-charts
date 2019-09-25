@@ -4,7 +4,7 @@
 db:
   replicas: 1
   image:
-    # registry: docker.io
+    registry: docker.io
     repository: kommunikativch/metasfresh-db
     tag: "5.118"
     ## Specify a imagePullPolicy
@@ -18,7 +18,7 @@ db:
     ##
     pullSecrets:
       - dockerHubKommunikativSecret
-    
+
   podLabels: {}
   ## db resource requests and limits
   ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
