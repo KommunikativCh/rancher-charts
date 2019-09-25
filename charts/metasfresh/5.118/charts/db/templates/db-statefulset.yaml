@@ -59,11 +59,6 @@ spec:
         - name: db-data
           mountPath: {{ .Values.db.persistence.path }}
           subPath: {{ .Release.Namespace }}/{{ .Values.db.persistence.subPath }}
-  {{- if not .Values.db.persistence.enabled }}
-      volumes:
-      - name: "db-data"
-        emptyDir: {}
-  {{- else }}
   volumeClaimTemplates:
     - metadata:
         name: db-data
@@ -83,4 +78,3 @@ spec:
           storageClassName: {{ .Values.db.persistence.storageClass | quote }}
         {{- end }}
         {{- end }}
-  {{- end }}
