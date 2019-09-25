@@ -17,7 +17,7 @@ db:
     ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
     ##
     pullSecrets:
-      - dockerHubKommunikativSecret
+      - kommunikativch-dockerhub
 
   podLabels: {}
   ## db resource requests and limits
