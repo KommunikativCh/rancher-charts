@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: db-volume
+  labels: 
+    db-volume-namespace: {{ .Release.Namespace }}
+spec:
+  capacity:
+    storage: {{ .Values.db.persistence.size | quote }}
+  accessModes:
+  {{- range .Values.db.persistence.accessModes }}
+    - {{ . | quote }}
+  {{- end }}
+{{- if .Values.db.persistence.storageClass }}
+{{- if (eq "-" .Values.db.persistence.storageClass) }}
+  storageClassName: ""
+{{- else }}
+  storageClassName: {{ .Values.db.persistence.storageClass | quote }}
+{{- end }}
+{{- end }}
+    
