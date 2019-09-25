@@ -4,12 +4,10 @@ metadata:
   name: db-data-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
-  volumeMode: Filesystem
+  - ReadWriteOnce
   resources:
     requests:
-      storage: 100Gi
-  storageClassName: {{ .Values.db.persistence.storageClass | quote }}
-  selector:
-    matchLabels:
-      db-volume-namespace: {{ .Release.Namespace }}
+      storage: 20Gi
+  storageClassName: ""
+  volumeMode: Filesystem
+  volumeName: vol-1
