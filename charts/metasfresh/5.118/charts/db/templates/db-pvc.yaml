@@ -8,7 +8,7 @@ spec:
   volumeMode: Filesystem
   resources:
     requests:
-      storage: 8Gi
+      storage: 100Gi
   storageClassName: {{ .Values.db.persistence.storageClass | quote }}
   selector:
     matchLabels:
