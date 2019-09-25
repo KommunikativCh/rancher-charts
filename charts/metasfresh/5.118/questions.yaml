@@ -9,7 +9,7 @@ questions:
   required: true
   label: Persistent Volume Enabled
   show_subquestion_if: true
-  group: "metasfresh-db Settings"
+  group: "DB Settings"
   subquestions:
   - variable: db.persistence.size
     default: "8Gi"
