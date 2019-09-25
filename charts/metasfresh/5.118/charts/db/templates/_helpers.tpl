@@ -35,6 +35,6 @@ If release name contains chart name it will be used as a full name.
 Return the proper image name
 */}}
 {{- define "db.image" -}}
-{{- $tag := .Values.image.tag | default "latest" -}}
+{{- $tag := .Values.db.image.tag | default "latest" -}}
 {{- printf "%s:%s" .Values.db.image.repository $tag -}}
 {{- end -}}
