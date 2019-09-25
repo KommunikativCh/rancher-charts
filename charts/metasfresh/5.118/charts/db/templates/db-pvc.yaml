@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: db-data-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  storageClassName: {{ .Values.db.persistence.storageClass | quote }}
+  selector:
+    matchLabels:
+      db-volume-namespace: {{ .Release.Namespace }}
