@@ -63,7 +63,7 @@ spec:
         - name: db-data
           persistentVolumeClaim:
             claimName: db-data
-  {{- if not .Values.master.persistence.enabled }}
+  {{- if not .Values.db.persistence.enabled }}
       volumes:
       - name: "db-data"
         emptyDir: {}
