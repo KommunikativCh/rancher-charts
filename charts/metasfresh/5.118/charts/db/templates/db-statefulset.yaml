@@ -58,7 +58,7 @@ spec:
         volumeMounts:
         - name: db-data
           mountPath: {{ .Values.db.persistence.path }}
-          subPath: ""
+          subPath: {{ .Values.db.persistence.subPath }}
       volumes:
       - name: db-data
         persistentVolumeClaim:
