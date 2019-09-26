@@ -13,7 +13,7 @@ spec:
   {{- if .Values.persistence.enabled }}      
   resources:
     requests:
-      storage: {{ .Values.persistence.dbData.size }}
+      storage: {{ .Values.persistence.dbData.size | quote }}
   volumeMode: Filesystem
   volumeName: {{ .Values.persistence.dbData.volumeName }}
   {{- else }}
