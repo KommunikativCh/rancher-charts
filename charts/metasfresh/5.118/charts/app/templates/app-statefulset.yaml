@@ -40,7 +40,7 @@ spec:
         ports:
         - name: app
           containerPort: {{ .Values.app.port }}
-        - name: portActiveMq
+        - name: port-active-mq
           containerPort: {{ .Values.app.portActiveMq }}
         volumeMounts:
         - name: log
