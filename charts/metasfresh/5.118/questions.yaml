@@ -25,14 +25,14 @@ questions:
     required: true
 - variable: db.persistence.dbData.size
   default: "2Gi"
-  description: "Persistent volume DB Data volume size"
+  description: "volume DB Data volume size"
   type: string
   label: Volume data Size
   required: true
   show_if: "db.persistence.enabled=false"
 - variable: db.persistence.log.size
   default: "1Gi"
-  description: "Persistent volume DB LOG volume size"
+  description: "volume DB LOG volume size"
   type: string
   label: Volume log Size
   required: true
