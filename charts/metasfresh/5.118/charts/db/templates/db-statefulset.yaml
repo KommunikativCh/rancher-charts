@@ -19,7 +19,6 @@ spec:
     metadata:
       labels:
         release: "{{ .Release.Name }}"
-        role: master
         app: {{ template "db.name" . }}
 {{- if .Values.db.podLabels }}
 {{ toYaml .Values.db.podLabels | indent 8 }}
@@ -45,8 +44,14 @@ spec:
         volumeMounts:
         - name: db-data
           mountPath: {{ .Values.db.persistence.path }}
-          subPath: {{ .Values.db.persistence.subPath }}
+          subPath: {{ .Release.Namespace }}/{{ .Values.db.persistence.subPath }}
+        - name: log
+          mountPath: {{ .Values.db.persistence.log.path }}
+          subPath: {{ .Release.Namespace }}/{{ .Values.db.persistence.log.subPath }}
       volumes:
       - name: db-data
         persistentVolumeClaim:
-          claimName: db-data-pvc
+          claimName: db-data-db-pvc
+      - name: log
+        persistentVolumeClaim:
+          claimName: db-data-log-pvc

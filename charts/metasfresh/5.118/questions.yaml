@@ -11,14 +11,15 @@ questions:
   show_subquestion_if: true
   group: "DB Settings"
   subquestions:
-  - variable: db.persistence.size
-    default: "8Gi"
-    description: "Persistent volume size"
+  - variable: db.persistence.db.volumeName
+    default: "vol-metasfresh-db-data"
+    description: "Persistent volume DB Data volume Name"
     type: string
-    label: Persistent Volume Size
-  - variable: db.persistence.volumeName
-    default: "storage-metasfresh-db"
-    description: ""
+    label: Volume Name
+    required: true
+  - variable: db.persistence.log.volumeName
+    default: "vol-metasfresh-db-log"
+    description: "Persistent volume DB Log volume Name"
     type: string
     label: Volume Name
     required: true
