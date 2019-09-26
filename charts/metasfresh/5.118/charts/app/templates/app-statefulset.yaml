@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ template "app.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ template "app.name" . }}
+    chart: {{ template "app.chart" . }}
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  selector:
+    matchLabels:
+      release: "{{ .Release.Name }}"
+      app: {{ template "app.name" . }}
+  serviceName: "db"  
+  template:
+    metadata:
+      labels:
+        release: "{{ .Release.Name }}"
+        app: {{ template "app.name" . }}
+{{- if .Values.app.podLabels }}
+{{ toYaml .Values.app.podLabels | indent 8 }}
+{{- end }}
+      {{- if .Values.app.podAnnotations }}
+      annotations:
+{{ toYaml .Values.app.podAnnotations | indent 8 }}
+      {{- end }}
+    spec:
+      {{- if .Values.app.image.pullSecrets }}
+      imagePullSecrets:
+        {{- range .Values.app.image.pullSecrets }}
+        - name: {{ . }}
+        {{- end}}
+      {{- end}}
+      containers:
+      - name: {{ template "app.fullname" . }}
+        image: "{{ template "app.image" . }}"
+        imagePullPolicy: {{ default "" .Values.app.image.pullPolicy | quote }}
+        volumeMounts:
+        - name: log
+          mountPath: {{ .Values.app.persistence.log.path }}
+          subPath: {{ .Release.Namespace }}/{{ .Values.app.persistence.log.subPath }}
+        - name: reports
+          mountPath: {{ .Values.app.persistence.reports.path }}
+          subPath: {{ .Release.Namespace }}/{{ .Values.app.persistence.reports.subPath }}
+      volumes:
+      - name: log
+        persistentVolumeClaim:
+          claimName: app-data-log-pvc
+      - name: reports
+        persistentVolumeClaim:
+          claimName: app-data-reports-pvc

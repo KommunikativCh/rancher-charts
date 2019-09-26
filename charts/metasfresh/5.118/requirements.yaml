@@ -3,4 +3,9 @@ dependencies:
     version: 5.118
     import-values:
       - child: db
-        parent: db    
+        parent: db
+  - name: app
+    version: 5.118
+    import-values:
+      - child: app
+        parent: app    
