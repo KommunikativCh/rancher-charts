@@ -5,14 +5,14 @@ metadata:
 spec:
   accessModes:
   - ReadWriteOnce
-{{- if .Values.db.persistence.enabled }}      
+  {{- if .Values.db.persistence.enabled }}      
   resources:
     requests:
       storage: ""
   volumeMode: Filesystem
   volumeName: {{ .Values.db.persistence.dbData.volumeName }}
-{{- else }}
+  {{- else }}
   resources:
     requests:
       storage: {{ .Values.db.persistence.dbData.size }}
-{{- end }}
+  {{- end }}
