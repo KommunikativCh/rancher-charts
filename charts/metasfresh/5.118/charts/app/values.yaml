@@ -36,7 +36,7 @@ app:
   podAnnotations: {}
 
   port: 8282
-  port-active-mq: 61616
+  portActiveMq: 61616
   persistence:
     enabled: true
     log:

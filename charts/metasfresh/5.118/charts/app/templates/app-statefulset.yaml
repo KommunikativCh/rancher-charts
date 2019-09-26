@@ -40,8 +40,8 @@ spec:
         ports:
         - name: app
           containerPort: {{ .Values.db.port }}
-        - name: app-active-mq
-          containerPort: {{ .Values.db.port-active-mq }}
+        - name: portActiveMq
+          containerPort: {{ .Values.db.portActiveMq }}
         volumeMounts:
         - name: log
           mountPath: {{ .Values.app.persistence.log.path }}
