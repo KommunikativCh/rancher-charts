@@ -35,7 +35,8 @@ app:
   ## metasfresh-app pod annotations
   podAnnotations: {}
 
-  port: 5432
+  port: 8282
+  port-active-mq: 61616
   persistence:
     enabled: true
     log:
