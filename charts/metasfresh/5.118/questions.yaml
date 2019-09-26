@@ -48,31 +48,31 @@ questions:
   show_subquestion_if: true
   group: "APP Settings"
   subquestions:
-  - variable: app.persistence.dbData.volumeName
-    default: "vol-metasfresh-db-data"
-    description: "Persistent volume DB Data volume Name"
-    type: string
-    label: Volume Name
-    required: true
   - variable: app.persistence.log.volumeName
-    default: "vol-metasfresh-db-log"
-    description: "Persistent volume DB Log volume Name"
+    default: "vol-metasfresh-app-log"
+    description: "Persistent volume APP Log volume Name"
     type: string
     label: Volume Name
     required: true
-- variable: app.persistence.dbData.size
-  default: "2Gi" 
-  description: "volume DB Data volume size"
+  - variable: app.persistence.reports.volumeName
+    default: "vol-metasfresh-app-reports"
+    description: "Persistent volume APP Reports volume Name"
+    type: string
+    label: Volume Name
+    required: true
+- variable: app.persistence.log.size
+  default: "1Gi" 
+  description: "volume APP Log volume size"
   type: string
-  label: Volume data Size
+  label: Volume log Size
   required: true
   show_if: "app.persistence.enabled=false"
   group: "APP Settings"
-- variable: app.persistence.log.size
+- variable: app.persistence.report.size
   default: "1Gi"
-  description: "volume DB LOG volume size"
+  description: "volume DB Reports volume size"
   type: string
-  label: Volume log Size
+  label: Volume reports Size
   required: true
   show_if: "app.persistence.enabled=false"
   group: "APP Settings"
