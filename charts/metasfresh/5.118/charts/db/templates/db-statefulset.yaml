@@ -12,7 +12,6 @@ spec:
   selector:
     matchLabels:
       release: "{{ .Release.Name }}"
-      role: master
       app: {{ template "db.name" . }}
   serviceName: "db"  
   template:
