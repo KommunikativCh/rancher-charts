@@ -64,15 +64,15 @@ questions:
   default: "1Gi" 
   description: "volume APP Log volume size"
   type: string
-  label: Volume log Size
+  label: Volume LOG Size
   required: true
   show_if: "app.persistence.enabled=false"
   group: "APP Settings"
-- variable: app.persistence.report.size
+- variable: app.persistence.reports.size
   default: "1Gi"
   description: "volume DB Reports volume size"
   type: string
-  label: Volume reports Size
+  label: Volume Reports Size
   required: true
   show_if: "app.persistence.enabled=false"
   group: "APP Settings"
