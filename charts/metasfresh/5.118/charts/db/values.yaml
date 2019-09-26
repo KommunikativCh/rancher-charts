@@ -34,11 +34,6 @@ db:
   # tolerations: []
   ## metasfresh-db pod annotations
   podAnnotations: {}
-  ## metasfresh-db Pod Security Context
-  securityContext:
-    enabled: false
-    fsGroup: 1001
-    runAsUser: 1001
 
   port: 5432
   persistence:
@@ -58,8 +53,9 @@ db:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    storageClass: "storage-metasfresh-db"
+    storageClass: ""
     accessModes:
     - ReadWriteOnce
     size: 8Gi
+    volumeName: ""
     

@@ -7,7 +7,7 @@ spec:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 20Gi
+      storage: {{ .Values.db.persistence.size }}
   storageClassName: ""
   volumeMode: Filesystem
-  volumeName: vol-1
+  volumeName: {{ .Values.db.persistence.volumeName }}

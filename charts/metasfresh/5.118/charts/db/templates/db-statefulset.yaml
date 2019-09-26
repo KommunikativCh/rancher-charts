@@ -35,19 +35,6 @@ spec:
         - name: {{ . }}
         {{- end}}
       {{- end}}
-      {{- if .Values.db.securityContext.enabled }}
-      securityContext:
-        fsGroup: {{ .Values.db.securityContext.fsGroup }}
-        runAsUser: {{ .Values.db.securityContext.runAsUser }}
-      {{- end }}
-      {{- if .Values.db.nodeSelector }}
-      nodeSelector:
-{{ toYaml .Values.db.nodeSelector | indent 8 }}
-      {{- end }}
-      {{- if .Values.db.tolerations }}
-      tolerations:
-{{ toYaml .Values.db.tolerations | indent 8 }}
-      {{- end }}
       containers:
       - name: {{ template "db.fullname" . }}
         image: "{{ template "db.image" . }}"

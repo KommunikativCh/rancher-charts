@@ -16,8 +16,9 @@ questions:
     description: "Persistent volume size"
     type: string
     label: Persistent Volume Size
-  - variable: db.persistence.storageClass
+  - variable: db.persistence.volumeName
     default: "storage-metasfresh-db"
-    description: "If undefined or null, uses the default StorageClass. Defaults to null."
-    type: storageclass
-    label: Default Storage Class
+    description: ""
+    type: string
+    label: Volume Name
+    required: true
