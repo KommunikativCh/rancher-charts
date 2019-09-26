@@ -42,8 +42,8 @@ spec:
           containerPort: {{ .Values.db.port }}
         volumeMounts:
         - name: db-data
-          mountPath: {{ .Values.db.persistence.dbdata.path }}
-          subPath: {{ .Release.Namespace }}/{{ .Values.db.persistence.dbdata.subPath }}
+          mountPath: {{ .Values.db.persistence.dbData.path }}
+          subPath: {{ .Release.Namespace }}/{{ .Values.db.persistence.dbData.subPath }}
         - name: log
           mountPath: {{ .Values.db.persistence.log.path }}
           subPath: {{ .Release.Namespace }}/{{ .Values.db.persistence.log.subPath }}
