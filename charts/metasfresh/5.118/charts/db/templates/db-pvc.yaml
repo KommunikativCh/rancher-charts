@@ -5,9 +5,6 @@ metadata:
 spec:
   accessModes:
   - ReadWriteOnce
-  resources:
-    requests:
-      storage: {{ .Values.db.persistence.size }}
   storageClassName: ""
   volumeMode: Filesystem
   volumeName: {{ .Values.db.persistence.volumeName }}
