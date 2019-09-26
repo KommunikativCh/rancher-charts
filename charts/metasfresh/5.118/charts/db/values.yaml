@@ -36,7 +36,7 @@ db:
   podAnnotations: {}
   ## metasfresh-db Pod Security Context
   securityContext:
-    enabled: true
+    enabled: false
     fsGroup: 1001
     runAsUser: 1001
 
