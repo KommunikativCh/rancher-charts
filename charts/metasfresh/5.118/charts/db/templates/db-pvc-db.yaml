@@ -10,9 +10,9 @@ spec:
     requests:
       storage: ""
   volumeMode: Filesystem
-  volumeName: {{ .Values.db.persistence.db.volumeName }}
+  volumeName: {{ .Values.db.persistence.dbData.volumeName }}
 {{- else }}
   resources:
     requests:
-      storage: {{ .Values.db.persistence.db.size }}
+      storage: {{ .Values.db.persistence.dbData.size }}
 {{- end }}

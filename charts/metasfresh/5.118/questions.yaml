@@ -11,7 +11,7 @@ questions:
   show_subquestion_if: true
   group: "DB Settings"
   subquestions:
-  - variable: db.persistence.db.volumeName
+  - variable: db.persistence.dbData.volumeName
     default: "vol-metasfresh-db-data"
     description: "Persistent volume DB Data volume Name"
     type: string
