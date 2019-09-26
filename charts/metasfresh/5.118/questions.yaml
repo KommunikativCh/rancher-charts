@@ -17,24 +17,22 @@ questions:
     type: string
     label: Volume Name
     required: true
+  - variable: db.persistence.dbData.size
+    default: "2Gi"
+    description: "volume DB Data volume size"
+    type: string
+    label: Volume data Size
+    required: true
   - variable: db.persistence.log.volumeName
     default: "vol-metasfresh-db-log"
     description: "Persistent volume DB Log volume Name"
     type: string
     label: Volume Name
     required: true
-- variable: db.persistence.dbData.size
-  default: "2Gi"
-  description: "volume DB Data volume size"
-  type: string
-  label: Volume data Size
-  required: true
-  show_if: "db.persistence.enabled=false"
-- variable: db.persistence.log.size
-  default: "1Gi"
-  description: "volume DB LOG volume size"
-  type: string
-  label: Volume log Size
-  required: true
-  show_if: "db.persistence.enabled=false"
-    
+  - variable: db.persistence.log.size
+    default: "1Gi"
+    description: "volume DB LOG volume size"
+    type: string
+    label: Volume log Size
+    required: true
+    show_if: "db.persistence.enabled=false"
