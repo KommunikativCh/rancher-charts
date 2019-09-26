@@ -37,7 +37,7 @@ db:
 
   port: 5432
   persistence:
-    enabled: false
+    enabled: true
     dbData:
 
       ## The path the volume will be mounted at, useful when using different
