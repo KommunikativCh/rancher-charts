@@ -13,7 +13,7 @@ spec:
 {{- if .Values.persistence.enabled }}      
   resources:
     requests:
-      storage: ""
+      storage: "1Ki"
   volumeMode: Filesystem
   volumeName: {{ .Values.persistence.log.volumeName }}
 {{- else }}
