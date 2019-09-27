@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ template "search.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ template "search.name" . }}
+    chart: {{ template "search.chart" . }}
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  selector:
+    matchLabels:
+      release: "{{ .Release.Name }}"
+      app: {{ template "search.name" . }}
+  serviceName: "db"  
+  template:
+    metadata:
+      labels:
+        release: "{{ .Release.Name }}"
+        app: {{ template "search.name" . }}
+{{- if .Values.search.podLabels }}
+{{ toYaml .Values.search.podLabels | indent 8 }}
+{{- end }}
+      {{- if .Values.search.podAnnotations }}
+      annotations:
+{{ toYaml .Values.search.podAnnotations | indent 8 }}
+      {{- end }}
+    spec:
+      {{- if .Values.search.image.pullSecrets }}
+      imagePullSecrets:
+        {{- range .Values.search.image.pullSecrets }}
+        - name: {{ . }}
+        {{- end}}
+      {{- end}}
+      containers:
+      - name: {{ template "search.fullname" . }}
+        image: "{{ template "search.image" . }}"
+        imagePullPolicy: {{ default "" .Values.search.image.pullPolicy | quote }}
+        ports:
+        - name: search
+          containerPort: {{ .Values.search.port }}
+        volumeMounts:
+        - name: log
+          mountPath: {{ .Values.search.persistence.searchData.path }}
+          subPath: {{ .Release.Namespace }}/{{ .Values.search.persistence.searchData.subPath }}
+      volumes:
+      - name: log
+        persistentVolumeClaim:
+          claimName: search-data-search-data-pvc

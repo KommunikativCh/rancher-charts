@@ -4,8 +4,13 @@ dependencies:
     import-values:
       - child: db
         parent: db
+  - name: search
+    version: 5.118
+    import-values:
+      - child: search
+        parent: search
   - name: app
     version: 5.118
     import-values:
       - child: app
-        parent: app    
+        parent: app
