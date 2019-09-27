@@ -43,7 +43,7 @@ spec:
         imagePullPolicy: {{ default "" .Values.webui.image.pullPolicy | quote }}
         env:
         - name: WEBAPI_URL
-          value: "http://metasfresh-extern.kommunikativ-test.35.227.225.97.xip.io/"
+          value: "http://metasfresh-extern.kommunikativ-test.35.227.225.97.xip.io"
         ports:
         - name: http
           containerPort: {{ .Values.webui.portHTTP }}
