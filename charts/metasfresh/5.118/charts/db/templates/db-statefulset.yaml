@@ -27,7 +27,10 @@ spec:
 {{ toYaml .Values.db.podAnnotations | indent 8 }}
       {{- end }}
     spec:
-      hostname: "db"
+      hostAliases:
+      - ip: "127.0.0.1"
+        hostnames:
+        - "db"
       {{- if .Values.db.image.pullSecrets }}
       imagePullSecrets:
         {{- range .Values.db.image.pullSecrets }}

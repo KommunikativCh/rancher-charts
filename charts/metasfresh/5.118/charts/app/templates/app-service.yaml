@@ -13,9 +13,9 @@ spec:
   - name: app
     port: 8282
     targetPort: app
-  - name: communication
+  - name: activemq
     port: 61616
-    targetPort: communication
+    targetPort: activemq
   selector:
     app: {{ template "app.name" . }}
     release: "{{ .Release.Name }}"

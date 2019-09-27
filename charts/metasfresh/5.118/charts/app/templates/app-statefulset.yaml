@@ -44,8 +44,8 @@ spec:
         ports:
         - name: app
           containerPort: {{ .Values.app.port }}
-        - name: communication
-          containerPort: {{ .Values.app.portCommunication }}
+        - name: activemq
+          containerPort: {{ .Values.app.portActivemq }}
         volumeMounts:
         - name: log
           mountPath: {{ .Values.app.persistence.log.path }}
