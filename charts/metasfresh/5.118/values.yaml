@@ -4,3 +4,4 @@
 db:
 app:
 search:
+rabbitmq:

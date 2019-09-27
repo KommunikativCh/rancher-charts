@@ -9,6 +9,11 @@ dependencies:
     import-values:
       - child: search
         parent: search
+  - name: rabbitmq
+    version: 5.118
+    import-values:
+      - child: rabbitmq
+        parent: rabbitmq
   - name: app
     version: 5.118
     import-values:

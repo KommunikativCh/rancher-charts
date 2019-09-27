@@ -41,10 +41,10 @@ spec:
         - name: search
           containerPort: {{ .Values.search.port }}
         volumeMounts:
-        - name: log
+        - name: search-data
           mountPath: {{ .Values.search.persistence.searchData.path }}
           subPath: {{ .Release.Namespace }}/{{ .Values.search.persistence.searchData.subPath }}
       volumes:
-      - name: log
+      - name: search-data
         persistentVolumeClaim:
           claimName: search-data-search-data-pvc

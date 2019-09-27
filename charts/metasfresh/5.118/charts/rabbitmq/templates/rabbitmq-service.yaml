@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: "search"
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ template "rabbitmq.name" . }}
+    chart: {{ template "rabbitmq.chart" . }}
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  ports:
+  - name: rabbitmq
+    port: 5672
+    targetPort: rabbitmq
+  selector:
+    app: {{ template "rabbitmq.name" . }}
+    release: "{{ .Release.Name }}"
