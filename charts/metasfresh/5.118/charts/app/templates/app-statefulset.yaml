@@ -13,7 +13,7 @@ spec:
     matchLabels:
       release: "{{ .Release.Name }}"
       app: {{ template "app.name" . }}
-  serviceName: app"  
+  serviceName: "app"  
   template:
     metadata:
       labels:
@@ -44,8 +44,8 @@ spec:
         ports:
         - name: app
           containerPort: {{ .Values.app.port }}
-        - name: port-active-mq
-          containerPort: {{ .Values.app.portActiveMq }}
+        - name: communication
+          containerPort: {{ .Values.app.portCommunication }}
         volumeMounts:
         - name: log
           mountPath: {{ .Values.app.persistence.log.path }}
