@@ -13,7 +13,7 @@ spec:
     matchLabels:
       release: "{{ .Release.Name }}"
       app: {{ template "search.name" . }}
-  serviceName: "db"  
+  serviceName: "search"  
   template:
     metadata:
       labels:

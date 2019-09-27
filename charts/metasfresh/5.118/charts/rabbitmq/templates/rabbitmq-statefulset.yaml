@@ -13,7 +13,7 @@ spec:
     matchLabels:
       release: "{{ .Release.Name }}"
       app: {{ template "rabbitmq.name" . }}
-  serviceName: "db"  
+  serviceName: "rabbitmq"  
   template:
     metadata:
       labels:
@@ -38,7 +38,6 @@ spec:
       - name: {{ template "rabbitmq.fullname" . }}
         image: "{{ template "rabbitmq.image" . }}"
         imagePullPolicy: {{ default "" .Values.rabbitmq.image.pullPolicy | quote }}
-        hostname: "rabbitmq"
         env:
         - name: RABBITMQ_DEFAULT_USER
           value: "metasfresh"
