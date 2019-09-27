@@ -42,7 +42,7 @@ spec:
         image: "{{ template "webapi.image" . }}"
         imagePullPolicy: {{ default "" .Values.webapi.image.pullPolicy | quote }}
         ports:
-        - name: app
+        - name: webapi
           containerPort: {{ .Values.webapi.port }}
         volumeMounts:
         - name: log
