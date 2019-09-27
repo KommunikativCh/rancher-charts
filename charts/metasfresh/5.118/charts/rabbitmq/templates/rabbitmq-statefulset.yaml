@@ -38,6 +38,7 @@ spec:
       - name: {{ template "rabbitmq.fullname" . }}
         image: "{{ template "rabbitmq.image" . }}"
         imagePullPolicy: {{ default "" .Values.rabbitmq.image.pullPolicy | quote }}
+        hostname: "rabbitmq"
         env:
         - name: RABBITMQ_DEFAULT_USER
           value: "metasfresh"
