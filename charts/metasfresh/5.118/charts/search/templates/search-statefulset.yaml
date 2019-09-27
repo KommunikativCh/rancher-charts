@@ -27,7 +27,10 @@ spec:
 {{ toYaml .Values.search.podAnnotations | indent 8 }}
       {{- end }}
     spec:
-      hostname: "search"
+      hostAliases:
+      - ip: "127.0.0.1"
+        hostnames:
+        - "search"
       {{- if .Values.search.image.pullSecrets }}
       imagePullSecrets:
         {{- range .Values.search.image.pullSecrets }}

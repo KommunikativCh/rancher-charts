@@ -5,3 +5,4 @@ db:
 app:
 search:
 rabbitmq:
+webapi:

@@ -126,3 +126,27 @@ questions:
   show_if: "rabbitmq.persistence.enabled=false"
   group: "RABBITMQ Settings"
   
+- variable: webapi.persistence.enabled
+  default: "false"
+  description: "Use persistent storage"
+  type: boolean
+  required: true
+  label: Persistent Volume Enabled
+  show_subquestion_if: true
+  group: "WEBAPI Settings"
+  subquestions:
+  - variable: webapi.persistence.log.volumeName
+    default: "vol-metasfresh-webapi-log-data"
+    description: "Persistent volume WEBAPI Log volume Name"
+    type: string
+    label: Volume RABBITMQ Log Name
+    required: true
+- variable: webapi.persistence.log.size
+  default: "1Gi" 
+  description: "volume WEBAPI Log volume size"
+  type: string
+  label: Volume RABBITMQ Log Size
+  required: true
+  show_if: "webapi.persistence.enabled=false"
+  group: "WEBAPI Settings"
+  

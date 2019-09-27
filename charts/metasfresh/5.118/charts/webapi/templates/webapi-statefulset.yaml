@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ template "webapi.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ template "webapi.name" . }}
+    chart: {{ template "webapi.chart" . }}
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  selector:
+    matchLabels:
+      release: "{{ .Release.Name }}"
+      app: {{ template "webapi.name" . }}
+  serviceName: "app"  
+  template:
+    metadata:
+      labels:
+        release: "{{ .Release.Name }}"
+        app: {{ template "webapi.name" . }}
+{{- if .Values.webapi.podLabels }}
+{{ toYaml .Values.webapi.podLabels | indent 8 }}
+{{- end }}
+      {{- if .Values.webapi.podAnnotations }}
+      annotations:
+{{ toYaml .Values.webapi.podAnnotations | indent 8 }}
+      {{- end }}
+    spec:
+      hostAliases:
+      - ip: "127.0.0.1"
+        hostnames:
+        - "webapi"
+      {{- if .Values.webapi.image.pullSecrets }}
+      imagePullSecrets:
+        {{- range .Values.webapi.image.pullSecrets }}
+        - name: {{ . }}
+        {{- end}}
+      {{- end}}
+      containers:
+      - name: {{ template "webapi.fullname" . }}
+        image: "{{ template "webapi.image" . }}"
+        imagePullPolicy: {{ default "" .Values.webapi.image.pullPolicy | quote }}
+        ports:
+        - name: app
+          containerPort: {{ .Values.webapi.port }}
+        volumeMounts:
+        - name: log
+          mountPath: {{ .Values.webapi.persistence.log.path }}
+          subPath: {{ .Release.Namespace }}/{{ .Values.webapi.persistence.log.subPath }}
+      volumes:
+      - name: log
+        persistentVolumeClaim:
+          claimName: webapi-data-log-pvc

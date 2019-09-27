@@ -19,3 +19,8 @@ dependencies:
     import-values:
       - child: app
         parent: app
+  - name: webapi
+    version: 5.118
+    import-values:
+      - child: webapi
+        parent: webapi
