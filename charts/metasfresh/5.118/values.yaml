@@ -1,9 +1,3 @@
 ## kommunikativch metasfresh-db image version
 ## ref: https://cloud.docker.com/repository/docker/kommunikativch/metasfresh-db/tags
 ##
-db:
-app:
-search:
-rabbitmq:
-webapi:
-webui:
