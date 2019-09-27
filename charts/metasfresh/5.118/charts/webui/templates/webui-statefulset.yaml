@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ template "webui.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ template "webui.name" . }}
+    chart: {{ template "webui.chart" . }}
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  selector:
+    matchLabels:
+      release: "{{ .Release.Name }}"
+      app: {{ template "webui.name" . }}
+  serviceName: "webui"  
+  template:
+    metadata:
+      labels:
+        release: "{{ .Release.Name }}"
+        app: {{ template "webui.name" . }}
+{{- if .Values.webui.podLabels }}
+{{ toYaml .Values.webui.podLabels | indent 8 }}
+{{- end }}
+      {{- if .Values.webui.podAnnotations }}
+      annotations:
+{{ toYaml .Values.webui.podAnnotations | indent 8 }}
+      {{- end }}
+    spec:
+      hostAliases:
+      - ip: "127.0.0.1"
+        hostnames:
+        - "webui"
+      {{- if .Values.webui.image.pullSecrets }}
+      imagePullSecrets:
+        {{- range .Values.webui.image.pullSecrets }}
+        - name: {{ . }}
+        {{- end}}
+      {{- end}}
+      containers:
+      - name: {{ template "webui.fullname" . }}
+        image: "{{ template "webui.image" . }}"
+        imagePullPolicy: {{ default "" .Values.webui.image.pullPolicy | quote }}
+        ports:
+        - name: http
+          containerPort: {{ .Values.webui.portHTTP }}
+        - name: https
+          containerPort: {{ .Values.webui.portHTTPS }}

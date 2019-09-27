@@ -24,3 +24,8 @@ dependencies:
     import-values:
       - child: webapi
         parent: webapi
+  - name: webui
+    version: 5.118
+    import-values:
+      - child: webui
+        parent: webui

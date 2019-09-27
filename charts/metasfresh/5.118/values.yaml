@@ -6,3 +6,4 @@ app:
 search:
 rabbitmq:
 webapi:
+webui:
