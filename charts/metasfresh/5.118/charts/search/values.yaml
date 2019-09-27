@@ -35,7 +35,7 @@ search:
   ## metasfresh-db pod annotations
   podAnnotations: {}
 
-  port: 5432
+  port: 9300
   persistence:
     enabled: true
     searchData:
