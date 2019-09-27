@@ -13,7 +13,7 @@ spec:
     matchLabels:
       release: "{{ .Release.Name }}"
       app: {{ template "webapi.name" . }}
-  serviceName: "app"  
+  serviceName: "webapi"  
   template:
     metadata:
       labels:
