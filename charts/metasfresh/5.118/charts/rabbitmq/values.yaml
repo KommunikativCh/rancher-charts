@@ -35,7 +35,7 @@ rabbitmq:
   ## metasfresh-db pod annotations
   podAnnotations: {}
 
-  port: 9300
+  port: 5672
   persistence:
     enabled: true
     log:
