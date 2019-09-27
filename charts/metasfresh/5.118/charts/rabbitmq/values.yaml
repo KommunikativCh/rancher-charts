@@ -5,7 +5,7 @@ rabbitmq:
   replicas: 1
   image:
     registry: docker.io
-    repository: kommunikativch/metasfresh-search
+    repository: kommunikativch/metasfresh-rabbitqm
     tag: "5.118"
     ## Specify a imagePullPolicy
     ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
