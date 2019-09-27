@@ -33,6 +33,7 @@ spec:
         - name: {{ . }}
         {{- end}}
       {{- end}}
+      hostname: "rabbitmq"
       containers:
       - name: {{ template "rabbitmq.fullname" . }}
         image: "{{ template "rabbitmq.image" . }}"

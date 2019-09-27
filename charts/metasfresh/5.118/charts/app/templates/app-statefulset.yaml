@@ -13,7 +13,7 @@ spec:
     matchLabels:
       release: "{{ .Release.Name }}"
       app: {{ template "app.name" . }}
-  serviceName: "db"  
+  serviceName: app"  
   template:
     metadata:
       labels:
@@ -27,6 +27,7 @@ spec:
 {{ toYaml .Values.app.podAnnotations | indent 8 }}
       {{- end }}
     spec:
+      hostname: "app"
       {{- if .Values.app.image.pullSecrets }}
       imagePullSecrets:
         {{- range .Values.app.image.pullSecrets }}
