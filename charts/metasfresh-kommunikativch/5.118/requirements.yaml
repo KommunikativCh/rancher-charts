@@ -1,0 +1,17 @@
+dependencies:
+  - name: metsafresh
+    repository: https://github.com/KommunikativCh/rancher-charts
+    version: 5.118
+    import-values:
+      - child: db
+        parent: db
+      - child: search
+        parent: search
+      - child: rabbitmq
+        parent: rabbitmq
+      - child: app
+        parent: app
+      - child: webapi
+        parent: webapi
+      - child: webui
+        parent: webui
