@@ -10,9 +10,9 @@ metadata:
 spec:
   accessModes:
   - ReadWriteOnce
+  capacity:
+    storage: 20Gi
   gcePersistentDisk:
     pdName: "disk-metasfresh-db-data-kommunikativ"
     fsType: "ext-4"
-    capacity:
-      storage: 20Gi
   storageClassName: ""
