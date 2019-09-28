@@ -1,5 +1,4 @@
-apiVersion: v1
-{{- if .Values.persistence.enabled }}      
+apiVersion: v1     
 kind: PersistentVolume
 metadata:
   name: {{ .Values.persistence.dbData.volumeName }}
@@ -15,4 +14,3 @@ spec:
   - pdName: "disk-metasfresh-db-data-kommunikativ"
   - fsType: "ext-4"
   storageClassName: ""
-{{- end }}
