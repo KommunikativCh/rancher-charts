@@ -1,5 +1,5 @@
 dependencies:
-  - name: metsafresh
+  - name: metasfresh
     repository: https://github.com/KommunikativCh/rancher-charts
     version: 5.118
     import-values:
