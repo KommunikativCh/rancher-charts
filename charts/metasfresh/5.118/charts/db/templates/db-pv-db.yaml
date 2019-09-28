@@ -13,4 +13,5 @@ spec:
   gcePersistentDisk:
   - pdName: "disk-metasfresh-db-data-kommunikativ"
   - fsType: "ext-4"
+  capacity: "20Gi"
   storageClassName: ""
