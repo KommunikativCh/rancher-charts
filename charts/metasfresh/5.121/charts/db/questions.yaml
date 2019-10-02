@@ -1,0 +1,38 @@
+categories:
+- KeyValue
+- Database
+questions:
+- variable: persistence.enabled
+  default: "false"
+  description: "Use persistent storage"
+  type: boolean
+  required: true
+  label: Persistent Volume Enabled
+  show_subquestion_if: true
+  group: "DB Settings"
+  subquestions:
+  - variable: persistence.dbData.volumeName
+    default: "vol-metasfresh-db-data"
+    description: "Persistent volume DB Data volume Name"
+    type: string
+    label: Volume data Name
+    required: true
+  - variable: persistence.dbData.size
+    default: "2Gi"
+    description: "Persistent volume DB Data volume size"
+    type: string
+    label: Volume data Size
+    required: true
+  - variable: persistence.log.volumeName
+    default: "vol-metasfresh-db-log"
+    description: "Persistent volume DB Log volume Name"
+    type: string
+    label: Volume log Name
+    required: true
+  - variable: persistence.log.size
+    default: "1Gi"
+    description: "Persistent volume DB Data log size"
+    type: string
+    label: Volume log Size
+    required: true
+    

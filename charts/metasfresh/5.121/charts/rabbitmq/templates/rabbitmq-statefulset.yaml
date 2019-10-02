@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ template "search.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ template "rabbitmq.name" . }}
+    chart: {{ template "rabbitmq.chart" . }}
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  selector:
+    matchLabels:
+      release: "{{ .Release.Name }}"
+      app: {{ template "rabbitmq.name" . }}
+  serviceName: "rabbitmq"  
+  template:
+    metadata:
+      labels:
+        release: "{{ .Release.Name }}"
+        app: {{ template "rabbitmq.name" . }}
+{{- if .Values.rabbitmq.podLabels }}
+{{ toYaml .Values.rabbitmq.podLabels | indent 8 }}
+{{- end }}
+      {{- if .Values.rabbitmq.podAnnotations }}
+      annotations:
+{{ toYaml .Values.rabbitmq.podAnnotations | indent 8 }}
+      {{- end }}
+    spec:
+      {{- if .Values.rabbitmq.image.pullSecrets }}
+      imagePullSecrets:
+        {{- range .Values.rabbitmq.image.pullSecrets }}
+        - name: {{ . }}
+        {{- end}}
+      {{- end}}
+      hostAliases:
+      - ip: "127.0.0.1"
+        hostnames:
+        - "rabbitmq"
+      containers:
+      - name: {{ template "rabbitmq.fullname" . }}
+        image: "{{ template "rabbitmq.image" . }}"
+        imagePullPolicy: {{ default "" .Values.rabbitmq.image.pullPolicy | quote }}
+        env:
+        - name: RABBITMQ_DEFAULT_USER
+          value: "metasfresh"
+        - name: RABBITMQ_DEFAULT_PASS
+          value: "metasfresh"
+        - name: RABBITMQ_DEFAULT_VHOST
+          value: "/"
+        ports:
+        - name: rabbitmq
+          containerPort: {{ .Values.rabbitmq.port }}
+        volumeMounts:
+        - name: log
+          mountPath: {{ .Values.rabbitmq.persistence.log.path }}
+          subPath: {{ .Release.Namespace }}/{{ .Values.rabbitmq.persistence.log.subPath }}
+      volumes:
+      - name: log
+        persistentVolumeClaim:
+          claimName: rabbitmq-data-log-pvc

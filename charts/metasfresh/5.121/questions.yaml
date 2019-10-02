@@ -1,0 +1,152 @@
+categories:
+- KeyValue
+- Database
+questions:
+- variable: db.persistence.enabled
+  default: "false"
+  description: "Use persistent storage"
+  type: boolean
+  required: true
+  label: Persistent Volume Enabled
+  show_subquestion_if: true
+  group: "DB Settings"
+  subquestions:
+  - variable: db.persistence.dbData.volumeName
+    default: "vol-metasfresh-db-data"
+    description: "Persistent volume DB Data volume Name"
+    type: string
+    label: Volume Name
+    required: true
+  - variable: db.persistence.log.volumeName
+    default: "vol-metasfresh-db-log"
+    description: "Persistent volume DB Log volume Name"
+    type: string
+    label: Volume Name
+    required: true
+- variable: db.persistence.dbData.size
+  default: "2Gi" 
+  description: "volume DB Data volume size"
+  type: string
+  label: Volume data Size
+  required: true
+  show_if: "db.persistence.enabled=false"
+  group: "DB Settings"
+- variable: db.persistence.log.size
+  default: "1Gi"
+  description: "volume DB LOG volume size"
+  type: string
+  label: Volume log Size
+  required: true
+  show_if: "db.persistence.enabled=false"
+  group: "DB Settings"
+
+- variable: app.persistence.enabled
+  default: "false"
+  description: "Use persistent storage"
+  type: boolean
+  required: true
+  label: Persistent Volume Enabled
+  show_subquestion_if: true
+  group: "APP Settings"
+  subquestions:
+  - variable: app.persistence.log.volumeName
+    default: "vol-metasfresh-app-log"
+    description: "Persistent volume APP Log volume Name"
+    type: string
+    label: Volume Name
+    required: true
+  - variable: app.persistence.reports.volumeName
+    default: "vol-metasfresh-app-reports"
+    description: "Persistent volume APP Reports volume Name"
+    type: string
+    label: Volume Name
+    required: true
+- variable: app.persistence.log.size
+  default: "1Gi" 
+  description: "volume APP Log volume size"
+  type: string
+  label: Volume LOG Size
+  required: true
+  show_if: "app.persistence.enabled=false"
+  group: "APP Settings"
+- variable: app.persistence.reports.size
+  default: "1Gi"
+  description: "volume DB Reports volume size"
+  type: string
+  label: Volume Reports Size
+  required: true
+  show_if: "search.persistence.enabled=false"
+  group: "APP Settings"
+
+- variable: search.persistence.enabled
+  default: "false"
+  description: "Use persistent storage"
+  type: boolean
+  required: true
+  label: Persistent Volume Enabled
+  show_subquestion_if: true
+  group: "SEARCH Settings"
+  subquestions:
+  - variable: search.persistence.searchData.volumeName
+    default: "vol-metasfresh-search-search-data"
+    description: "Persistent volume SEARCH Data volume Name"
+    type: string
+    label: Volume SEARCH Data Name
+    required: true
+- variable: search.persistence.searchData.size
+  default: "1Gi" 
+  description: "volume SEARCH Data volume size"
+  type: string
+  label: Volume SEARCH Data Size
+  required: true
+  show_if: "search.persistence.enabled=false"
+  group: "SEARCH Settings"
+  
+- variable: rabbitmq.persistence.enabled
+  default: "false"
+  description: "Use persistent storage"
+  type: boolean
+  required: true
+  label: Persistent Volume Enabled
+  show_subquestion_if: true
+  group: "RABBITMQ Settings"
+  subquestions:
+  - variable: rabbitmq.persistence.log.volumeName
+    default: "vol-metasfresh-rabbitmq-log-data"
+    description: "Persistent volume RABBITMQ Log volume Name"
+    type: string
+    label: Volume RABBITMQ Log Name
+    required: true
+- variable: rabbitmq.persistence.log.size
+  default: "1Gi" 
+  description: "volume RABBITMQ Log volume size"
+  type: string
+  label: Volume RABBITMQ Log Size
+  required: true
+  show_if: "rabbitmq.persistence.enabled=false"
+  group: "RABBITMQ Settings"
+  
+- variable: webapi.persistence.enabled
+  default: "false"
+  description: "Use persistent storage"
+  type: boolean
+  required: true
+  label: Persistent Volume Enabled
+  show_subquestion_if: true
+  group: "WEBAPI Settings"
+  subquestions:
+  - variable: webapi.persistence.log.volumeName
+    default: "vol-metasfresh-webapi-log-data"
+    description: "Persistent volume WEBAPI Log volume Name"
+    type: string
+    label: Volume RABBITMQ Log Name
+    required: true
+- variable: webapi.persistence.log.size
+  default: "1Gi" 
+  description: "volume WEBAPI Log volume size"
+  type: string
+  label: Volume RABBITMQ Log Size
+  required: true
+  show_if: "webapi.persistence.enabled=false"
+  group: "WEBAPI Settings"
+  
