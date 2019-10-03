@@ -141,7 +141,7 @@ questions:
     type: string
     label: Volume RABBITMQ Log Name
     required: true
-- variable: webui.persistence.log.size
+- variable: webapi.persistence.log.size
   default: "1Gi" 
   description: "volume WEBAPI Log volume size"
   type: string

@@ -45,9 +45,9 @@ spec:
         - name: WEBAPI_URL
           value: {{ template "webui.webapiURL" . }}
         - name: URL_PATH
-          value: {{ .Values.webui.urlPath }}
+          value: {{ .Values.urlPath | .Values.webui.urlPath }}
         - name: HEADER_TITLE
-          value: {{ .Values.webui.headerTitle }}
+          value: {{ .Values.headerTitle | .Values.webui.headerTitle}}
         ports:
         - name: http
           containerPort: {{ .Values.webui.portHTTP }}
