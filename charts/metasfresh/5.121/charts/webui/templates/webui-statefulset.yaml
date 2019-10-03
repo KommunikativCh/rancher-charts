@@ -44,8 +44,6 @@ spec:
         env:
         - name: WEBAPI_URL
           value: {{ .Values.webapiURL }}
-        - name: URL_PATH
-          value: {{ .Values.urlPath }}s
         - name: HEADER_TITLE
           value: {{ .Values.webui.headerTitle }}
         ports:
