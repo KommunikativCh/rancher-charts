@@ -141,7 +141,7 @@ questions:
     type: string
     label: Volume RABBITMQ Log Name
     required: true
-- variable: webapi.persistence.log.size
+- variable: webui.persistence.log.size
   default: "1Gi" 
   description: "volume WEBAPI Log volume size"
   type: string
@@ -149,4 +149,17 @@ questions:
   required: true
   show_if: "webapi.persistence.enabled=false"
   group: "WEBAPI Settings"
-  
+- variable: webapi.webapiURL
+  default: "https://kommunikativ.mf.cloud.kommunikativ.ch" 
+  description: "WEBUI URL"
+  type: string
+  label: Webui URL
+  required: true
+  group: "WEBUI Settings"
+- variable: webapi.headerTitle
+  default: "Example GmbH" 
+  description: "WEBUI Header Title"
+  type: string
+  label: WEBUI Header Title
+  required: true
+  group: "WEBUI Settings"
