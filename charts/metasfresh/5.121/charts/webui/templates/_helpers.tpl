@@ -38,11 +38,3 @@ Return the proper image name
 {{- $tag := .Values.webui.image.tag | default "latest" -}}
 {{- printf "%s:%s" .Values.webui.image.repository $tag -}}
 {{- end -}}
-
-{{/*
-Return the proper webapi URL with Path
-*/}}
-{{- define "webui.webapiURL" -}}
-{{- $path := .Values.webui.urlPath | default "" -}}
-{{- printf "%s/%s" .Values.webui.webapiURL $path -}}
-{{- end -}}
