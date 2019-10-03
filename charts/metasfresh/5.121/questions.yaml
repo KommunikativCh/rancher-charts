@@ -156,7 +156,7 @@ questions:
   label: Webui URL
   required: true
   group: "WEBUI Settings"
-- variable: webui.headerTitle
+- variable: webui.webui.headerTitle
   default: "Example GmbH" 
   description: "WEBUI Header Title"
   type: string
