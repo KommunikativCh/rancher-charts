@@ -37,7 +37,6 @@ webui:
 
   portHTTP: 80
   portHTTPS: 443
-  webapiURL: https://mf.cloud.kommunikativ.ch
-  urlPath: kommunikativ-ch
+  webapiURL: https://kommunikativ.mf.cloud.kommunikativ.ch
   headerTitle: Example GmbH
   
