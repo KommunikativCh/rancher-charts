@@ -149,7 +149,7 @@ questions:
   required: true
   show_if: "webapi.persistence.enabled=false"
   group: "WEBAPI Settings"
-- variable: webui.webapiURL
+- variable: webui.webui.webapiURL
   default: "https://kommunikativ.mf.cloud.kommunikativ.ch" 
   description: "WEBUI URL"
   type: string
@@ -163,3 +163,11 @@ questions:
   label: WEBUI Header Title
   required: true
   group: "WEBUI Settings"
+- variable: webui.webui.imageURL
+  default: "https://image.kommunikativ.ch/kommunikativ-ch/metasfresh/metasfresh_logo_green_thumb.png" 
+  description: "WEBUI Image URL"
+  type: string
+  label: Webui Image URL
+  required: true
+  group: "WEBUI Settings"
+  

@@ -39,4 +39,4 @@ webui:
   portHTTPS: 443
   webapiURL: https://kommunikativ.mf.cloud.kommunikativ.ch
   headerTitle: Example GmbH
-  
+  imageURL: https://image.kommunikativ.ch/kommunikativ-ch/metasfresh/metasfresh_logo_green_thumb.png

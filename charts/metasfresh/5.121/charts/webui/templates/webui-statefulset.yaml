@@ -43,7 +43,9 @@ spec:
         imagePullPolicy: {{ default "" .Values.webui.image.pullPolicy | quote }}
         env:
         - name: WEBAPI_URL
-          value: {{ .Values.webapiURL }}
+          value: {{ .Values.webui.webapiURL }}
+        - name: IMAGE_URL
+          value: {{ .Values.webui.imageURL }}
         - name: HEADER_TITLE
           value: {{ .Values.webui.headerTitle }}
         ports:
