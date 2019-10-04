@@ -46,6 +46,8 @@ spec:
           value: {{ .Values.webui.webapiURL }}
         - name: IMAGE_URL
           value: {{ .Values.webui.imageURL }}
+        - name: FAVICON_URL
+          value: {{ .Values.webui.faviconURL }}
         - name: HEADER_TITLE
           value: {{ .Values.webui.headerTitle }}
         ports:

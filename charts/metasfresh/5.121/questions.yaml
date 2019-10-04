@@ -170,4 +170,11 @@ questions:
   label: Webui Image URL
   required: true
   group: "WEBUI Settings"
+- variable: webui.webui.faviconURL
+  default: "https://image.kommunikativ.ch/kommunikativ-ch/metasfresh/favicon.png" 
+  description: "WEBUI Favicon URL"
+  type: string
+  label: Webui Favicon URL
+  required: true
+  group: "WEBUI Settings"
   
