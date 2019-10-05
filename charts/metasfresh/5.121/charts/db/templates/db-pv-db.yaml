@@ -1,7 +1,8 @@
 apiVersion: v1     
 kind: PersistentVolume
 metadata:
-  name: "vol-metasfresh-db-data"
+  name: "vol-metasfresh-db-data-xxxxx"
+  namespace: default
   labels:
     app: "{{ template "db.name" . }}"
     chart: {{ template "db.chart" . }}
