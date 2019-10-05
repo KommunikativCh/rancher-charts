@@ -75,7 +75,7 @@ questions:
   type: string
   label: Volume Reports Size
   required: true
-  show_if: "search.persistence.enabled=false"
+  show_if: "app.persistence.enabled=false"
   group: "APP Settings"
 
 - variable: search.persistence.enabled
