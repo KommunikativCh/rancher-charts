@@ -51,6 +51,13 @@ spec:
         - name: log
           mountPath: {{ .Values.db.persistence.log.path }}
           subPath: {{ .Release.Namespace }}/{{ .Values.db.persistence.log.subPath }}
+        resources:
+          limits:
+            memory: 1Gi
+            cpu: "800m"
+          requests:
+            memory: 1Gi
+            cpu: "100m"
       volumes:
       - name: db-data
         persistentVolumeClaim:

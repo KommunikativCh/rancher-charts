@@ -48,6 +48,13 @@ spec:
         - name: log
           mountPath: {{ .Values.webapi.persistence.log.path }}
           subPath: {{ .Release.Namespace }}/{{ .Values.webapi.persistence.log.subPath }}
+        resources:
+          limits:
+            memory: 1Gi
+            cpu: "800m"
+          requests:
+            memory: 1Gi
+            cpu: "100m"
       volumes:
       - name: log
         persistentVolumeClaim:

@@ -53,6 +53,13 @@ spec:
         - name: reports
           mountPath: {{ .Values.app.persistence.reports.path }}
           subPath: {{ .Release.Namespace }}/{{ .Values.app.persistence.reports.subPath }}
+        resources:
+          limits:
+            memory: 1Gi
+            cpu: "800m"
+          requests:
+            memory: 1Gi
+            cpu: "100m" 
       volumes:
       - name: log
         persistentVolumeClaim:

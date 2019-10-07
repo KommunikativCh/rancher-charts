@@ -48,6 +48,13 @@ spec:
         - name: search-data
           mountPath: {{ .Values.search.persistence.searchData.path }}
           subPath: {{ .Release.Namespace }}/{{ .Values.search.persistence.searchData.subPath }}
+        resources:
+          limits:
+            memory: 256MB
+            cpu: "200m"
+          requests:
+            memory: 256MB
+            cpu: "100m"
       volumes:
       - name: search-data
         persistentVolumeClaim:

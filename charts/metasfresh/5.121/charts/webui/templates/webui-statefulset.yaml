@@ -55,3 +55,11 @@ spec:
           containerPort: {{ .Values.webui.portHTTP }}
         - name: https
           containerPort: {{ .Values.webui.portHTTPS }}
+        resources:
+          limits:
+            memory: 56MB
+            cpu: "200m"
+          requests:
+            memory: 56MB
+            cpu: "100m"
+        
