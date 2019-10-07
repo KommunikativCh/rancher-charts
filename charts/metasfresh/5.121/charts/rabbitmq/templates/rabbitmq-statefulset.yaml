@@ -61,7 +61,7 @@ spec:
             cpu: "100m"
           requests:
             memory: 256Mi
-            cpu: "100m"
+            cpu: "10m"
       volumes:
       - name: log
         persistentVolumeClaim:
