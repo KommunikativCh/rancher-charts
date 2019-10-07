@@ -56,6 +56,11 @@ spec:
           mountPath: {{ .Values.persistence.transfer.path }}
           subPath: {{ .Release.Namespace }}/{{ .Values.db.persistence.transfer.subPath }}
         {{- end}}
+        securityContext:
+          privileged: true
+          capabilities:
+            add:
+              - SYS_ADMIN
         resources:
           limits:
             memory: 1Gi
