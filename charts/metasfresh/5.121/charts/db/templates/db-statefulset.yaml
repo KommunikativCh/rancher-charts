@@ -51,6 +51,11 @@ spec:
         - name: log
           mountPath: {{ .Values.db.persistence.log.path }}
           subPath: {{ .Release.Namespace }}/{{ .Values.db.persistence.log.subPath }}
+        {{- if .Values.db.persistence.transfer.enabled }}
+        - name: transfer
+          mountPath: {{ .Values.db.persistence.transfer.path }}
+          subPath: {{ .Release.Namespace }}/{{ .Values.db.persistence.transfer.subPath }}
+        {{- end}}
         resources:
           limits:
             memory: 1Gi
@@ -65,3 +70,8 @@ spec:
       - name: log
         persistentVolumeClaim:
           claimName: db-data-log-pvc
+      {{- if .Values.db.persistence.transfer.enabled }}
+      - name: transfer
+        persistentVolumeClaim:
+          claimName: db-data-transfer-pvc
+      {{- end}}
