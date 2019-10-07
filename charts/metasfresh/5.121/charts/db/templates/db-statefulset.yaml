@@ -38,9 +38,8 @@ spec:
         {{- end}}
       {{- end}}
       securityContext:
-        capabilities:
-          add:
-            - SYS_ADMIN
+        defaultAddCapabilities:
+          - SYS_ADMIN
       containers:
       - name: {{ template "db.fullname" . }}
         image: "{{ template "db.image" . }}"
