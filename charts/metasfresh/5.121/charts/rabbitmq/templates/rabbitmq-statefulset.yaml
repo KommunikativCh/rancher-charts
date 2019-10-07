@@ -57,10 +57,10 @@ spec:
           subPath: {{ .Release.Namespace }}/{{ .Values.rabbitmq.persistence.log.subPath }}
         resources:
           limits:
-            memory: 256MB
+            memory: 256Mi
             cpu: "100m"
           requests:
-            memory: 256MB
+            memory: 256Mi
             cpu: "100m"
       volumes:
       - name: log

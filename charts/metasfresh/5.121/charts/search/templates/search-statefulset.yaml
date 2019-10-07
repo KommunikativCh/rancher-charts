@@ -50,10 +50,10 @@ spec:
           subPath: {{ .Release.Namespace }}/{{ .Values.search.persistence.searchData.subPath }}
         resources:
           limits:
-            memory: 256MB
+            memory: 256Mi
             cpu: "200m"
           requests:
-            memory: 256MB
+            memory: 256Mi
             cpu: "100m"
       volumes:
       - name: search-data
