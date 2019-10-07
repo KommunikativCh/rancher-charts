@@ -38,3 +38,11 @@ Return the proper image name
 {{- $tag := .Values.db.image.tag | default "latest" -}}
 {{- printf "%s:%s" .Values.db.image.repository $tag -}}
 {{- end -}}
+
+{{/*
+Return the proper image name for Transfer container
+*/}}
+{{- define "db.transfer.image" -}}
+{{- $tag := .Values.db.transfer.image.tag | default "latest" -}}
+{{- printf "%s:%s" .Values.db.transfer.image.repository $tag -}}
+{{- end -}}

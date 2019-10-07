@@ -37,6 +37,13 @@ questions:
   label: Volume log Size
   required: true
   group: "DB Settings"
+- variable: db.transfer.enabled
+  default: "false"
+  description: "Use transfer sidecar"
+  type: boolean
+  required: true
+  label: Transfer Sidecar Enabled
+  group: "DB Settings"
 
 - variable: app.persistence.enabled
   default: "false"

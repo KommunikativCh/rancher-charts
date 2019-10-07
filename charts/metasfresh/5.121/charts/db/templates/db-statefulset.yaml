@@ -37,9 +37,6 @@ spec:
         - name: {{ . }}
         {{- end}}
       {{- end}}
-      securityContext:
-        defaultAddCapabilities:
-          - SYS_ADMIN
       containers:
       - name: {{ template "db.fullname" . }}
         image: "{{ template "db.image" . }}"
@@ -61,6 +58,22 @@ spec:
           requests:
             memory: 1Gi
             cpu: "10m"
+      {{- if .Values.transfer.enabled }}
+      - name: "transfer"
+        image: "{{ template "db.transfer.image" . }}"
+        imagePullPolicy: {{ default "" .Values.db.transfer.image.pullPolicy | quote }}
+        securityContext:
+          capabilities:
+            add:
+              - SYS_ADMIN
+        volumeMounts:
+        - name: db-data
+          mountPath: "/db-data"
+          subPath: {{ .Release.Namespace }}/{{ .Values.db.persistence.dbData.subPath }}
+        - name: log
+          mountPath: "/db-log"
+          subPath: {{ .Release.Namespace }}/{{ .Values.db.persistence.log.subPath }}
+      {{- end}}
       volumes:
       - name: db-data
         persistentVolumeClaim:
