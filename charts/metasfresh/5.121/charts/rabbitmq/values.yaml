@@ -57,5 +57,5 @@ rabbitmq:
       storageClass: ""
       accessModes:
       - ReadWriteOnce
-      size: 1Gi
+      size: 10Gi
       volumeName: ""      

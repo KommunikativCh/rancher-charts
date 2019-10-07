@@ -29,28 +29,12 @@ questions:
   type: string
   label: Volume data Size
   required: true
-  show_if: "db.persistence.enabled=false"
   group: "DB Settings"
 - variable: db.persistence.log.size
   default: "10Gi"
   description: "volume DB LOG volume size"
   type: string
   label: Volume log Size
-  required: true
-  show_if: "db.persistence.enabled=false"
-  group: "DB Settings"
-- variable: db.persistence.transfer.enabled
-  default: "false"
-  description: "Use transfer storage"
-  type: boolean
-  required: false
-  label: Volume Transfer Enabled
-  group: "DB Settings"
-- variable: db.persistence.transfer.size
-  default: "10Gi"
-  description: "volume DB Transfer volume size"
-  type: string
-  label: Volume Transfer Size
   required: true
   group: "DB Settings"
 
@@ -76,20 +60,18 @@ questions:
     label: Volume Name
     required: true
 - variable: app.persistence.log.size
-  default: "1Gi" 
+  default: "10Gi" 
   description: "volume APP Log volume size"
   type: string
   label: Volume LOG Size
   required: true
-  show_if: "app.persistence.enabled=false"
   group: "APP Settings"
 - variable: app.persistence.reports.size
-  default: "1Gi"
+  default: "10Gi"
   description: "volume DB Reports volume size"
   type: string
   label: Volume Reports Size
   required: true
-  show_if: "app.persistence.enabled=false"
   group: "APP Settings"
 
 - variable: search.persistence.enabled
@@ -108,12 +90,11 @@ questions:
     label: Volume SEARCH Data Name
     required: true
 - variable: search.persistence.searchData.size
-  default: "1Gi" 
+  default: "10Gi" 
   description: "volume SEARCH Data volume size"
   type: string
   label: Volume SEARCH Data Size
   required: true
-  show_if: "search.persistence.enabled=false"
   group: "SEARCH Settings"
   
 - variable: rabbitmq.persistence.enabled
@@ -132,12 +113,11 @@ questions:
     label: Volume RABBITMQ Log Name
     required: true
 - variable: rabbitmq.persistence.log.size
-  default: "1Gi" 
+  default: "10Gi" 
   description: "volume RABBITMQ Log volume size"
   type: string
   label: Volume RABBITMQ Log Size
   required: true
-  show_if: "rabbitmq.persistence.enabled=false"
   group: "RABBITMQ Settings"
   
 - variable: webapi.persistence.enabled
@@ -156,12 +136,11 @@ questions:
     label: Volume RABBITMQ Log Name
     required: true
 - variable: webapi.persistence.log.size
-  default: "1Gi" 
+  default: "10Gi" 
   description: "volume WEBAPI Log volume size"
   type: string
   label: Volume RABBITMQ Log Size
   required: true
-  show_if: "webapi.persistence.enabled=false"
   group: "WEBAPI Settings"
 - variable: webui.webui.webapiURL
   default: "https://kommunikativ.mf.cloud.kommunikativ.ch" 
