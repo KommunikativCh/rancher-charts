@@ -75,10 +75,10 @@ spec:
         tty: true           
         volumeMounts:
         - name: log
-          mountPath: /log
+          mountPath: /app-log
           subPath: {{ .Release.Namespace }}/{{ .Values.app.persistence.log.subPath }}
         - name: reports
-          mountPath: /reports
+          mountPath: /app-reports
           subPath: {{ .Release.Namespace }}/{{ .Values.app.persistence.reports.subPath }}
       {{- end}}
       volumes:
