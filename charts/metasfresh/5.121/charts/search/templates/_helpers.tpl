@@ -38,3 +38,12 @@ Return the proper image name
 {{- $tag := .Values.search.image.tag | default "latest" -}}
 {{- printf "%s:%s" .Values.search.image.repository $tag -}}
 {{- end -}}
+
+
+{{/*
+Return the proper image name for Transfer container
+*/}}
+{{- define "search.transfer.image" -}}
+{{- $tag := .Values.search.transfer.image.tag | default "latest" -}}
+{{- printf "%s:%s" .Values.search.transfer.image.repository $tag -}}
+{{- end -}}

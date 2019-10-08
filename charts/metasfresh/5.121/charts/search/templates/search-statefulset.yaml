@@ -55,6 +55,24 @@ spec:
           requests:
             memory: 1Gi
             cpu: "10m"
+      {{- if .Values.transfer.enabled }}
+      - name: "transfer"
+        image: "{{ template "search.transfer.image" . }}"
+        imagePullPolicy: {{ default "" .Values.search.transfer.image.pullPolicy | quote }}
+        securityContext:
+          allowPrivilegeEscalation: true
+          capabilities:
+            add:
+              - SYS_ADMIN
+          privileged: true
+          readOnlyRootFilesystem: false
+        stdin: true
+        tty: true           
+        volumeMounts:
+        - name: search-data
+          mountPath: /search-data
+          subPath: {{ .Release.Namespace }}/{{ .Values.search.persistence.searchData.subPath }}
+      {{- end}}
       volumes:
       - name: search-data
         persistentVolumeClaim:

@@ -110,6 +110,13 @@ questions:
   label: Volume SEARCH Data Size
   required: true
   group: "SEARCH Settings"
+- variable: search.transfer.enabled
+  default: "false"
+  description: "Use transfer sidecar"
+  type: boolean
+  required: true
+  label: Transfer Sidecar Enabled
+  group: "SEARCH Settings"
   
 - variable: rabbitmq.persistence.enabled
   default: "false"
