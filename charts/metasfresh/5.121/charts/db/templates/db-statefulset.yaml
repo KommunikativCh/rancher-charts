@@ -63,11 +63,11 @@ spec:
         image: "{{ template "db.transfer.image" . }}"
         imagePullPolicy: {{ default "" .Values.db.transfer.image.pullPolicy | quote }}
         securityContext:
-          allowPrivilegeEscalation: false
+          allowPrivilegeEscalation: true
           capabilities:
             add:
               - SYS_ADMIN
-          privileged: false
+          privileged: true
           readOnlyRootFilesystem: false
         stdin: true
         tty: true           
