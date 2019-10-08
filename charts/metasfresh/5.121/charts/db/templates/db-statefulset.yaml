@@ -63,9 +63,14 @@ spec:
         image: "{{ template "db.transfer.image" . }}"
         imagePullPolicy: {{ default "" .Values.db.transfer.image.pullPolicy | quote }}
         securityContext:
+          allowPrivilegeEscalation: false
           capabilities:
             add:
               - SYS_ADMIN
+          privileged: false
+          readOnlyRootFilesystem: false
+        stdin: true
+        tty: true           
         volumeMounts:
         - name: db-data
           mountPath: "/db-data"
