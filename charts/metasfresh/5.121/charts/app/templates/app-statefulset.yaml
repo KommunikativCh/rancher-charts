@@ -60,6 +60,27 @@ spec:
           requests:
             memory: 1Gi
             cpu: "10m" 
+      {{- if .Values.transfer.enabled }}
+      - name: "transfer"
+        image: "{{ template "app.transfer.image" . }}"
+        imagePullPolicy: {{ default "" .Values.app.transfer.image.pullPolicy | quote }}
+        securityContext:
+          allowPrivilegeEscalation: true
+          capabilities:
+            add:
+              - SYS_ADMIN
+          privileged: true
+          readOnlyRootFilesystem: false
+        stdin: true
+        tty: true           
+        volumeMounts:
+        - name: log
+          mountPath: /log
+          subPath: {{ .Release.Namespace }}/{{ .Values.app.persistence.log.subPath }}
+        - name: reports
+          mountPath: /reports
+          subPath: {{ .Release.Namespace }}/{{ .Values.app.persistence.reports.subPath }}
+      {{- end}}
       volumes:
       - name: log
         persistentVolumeClaim:
