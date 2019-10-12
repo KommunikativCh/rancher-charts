@@ -38,6 +38,7 @@ spec:
         {{- end}}
       {{- end}}
       containers:
+      {{- if not .Values.transfer.enabled }}
       - name: {{ template "search.fullname" . }}
         image: "{{ template "search.image" . }}"
         imagePullPolicy: {{ default "" .Values.search.image.pullPolicy | quote }}
@@ -55,6 +56,7 @@ spec:
           requests:
             memory: 1Gi
             cpu: "10m"
+      {{- end}}
       {{- if .Values.transfer.enabled }}
       - name: "transfer"
         image: "{{ template "search.transfer.image" . }}"
