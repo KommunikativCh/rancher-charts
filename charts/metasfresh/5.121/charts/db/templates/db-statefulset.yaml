@@ -76,10 +76,10 @@ spec:
         volumeMounts:
         - name: db-data
           mountPath: "/db-data"
-          subPath: {{ .Release.Namespace }}/{{ .Values.db.persistence.dbData.subPath }}
+          subPath: ""
         - name: log
           mountPath: "/db-log"
-          subPath: {{ .Release.Namespace }}/{{ .Values.db.persistence.log.subPath }}
+          subPath: ""
       {{- end}}
       volumes:
       - name: db-data

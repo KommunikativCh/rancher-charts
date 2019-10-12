@@ -73,7 +73,7 @@ spec:
         volumeMounts:
         - name: search-data
           mountPath: /search-data
-          subPath: {{ .Release.Namespace }}/{{ .Values.search.persistence.searchData.subPath }}
+          subPath: ""
       {{- end}}
       volumes:
       - name: search-data
