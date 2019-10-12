@@ -38,6 +38,7 @@ spec:
         {{- end}}
       {{- end}}
       containers:
+      {{- if not .Values.transfer.enabled }}
       - name: {{ template "app.fullname" . }}
         image: "{{ template "app.image" . }}"
         imagePullPolicy: {{ default "" .Values.app.image.pullPolicy | quote }}
@@ -60,6 +61,7 @@ spec:
           requests:
             memory: 1Gi
             cpu: "10m" 
+      {{- end}}
       {{- if .Values.transfer.enabled }}
       - name: "transfer"
         image: "{{ template "app.transfer.image" . }}"
@@ -76,10 +78,10 @@ spec:
         volumeMounts:
         - name: log
           mountPath: /app-log
-          subPath: {{ .Release.Namespace }}/{{ .Values.app.persistence.log.subPath }}
+          subPath: ""
         - name: reports
           mountPath: /app-reports
-          subPath: {{ .Release.Namespace }}/{{ .Values.app.persistence.reports.subPath }}
+          subPath: ""
       {{- end}}
       volumes:
       - name: log
