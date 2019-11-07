@@ -37,6 +37,7 @@ app:
 
   port: 8282
   portActivemq: 61616
+  portDebug: 8788
   persistence:
     enabled: true
     log:

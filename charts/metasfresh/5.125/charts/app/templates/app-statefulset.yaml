@@ -47,6 +47,8 @@ spec:
           containerPort: {{ .Values.app.port }}
         - name: activemq
           containerPort: {{ .Values.app.portActivemq }}
+        - name: debug
+          containerPort: {{ .Values.app.portDebug }}
         volumeMounts:
         - name: log
           mountPath: {{ .Values.app.persistence.log.path }}
