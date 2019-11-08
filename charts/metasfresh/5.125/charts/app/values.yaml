@@ -99,4 +99,4 @@ app:
       ##
       pullSecrets:
         - kommunikativch-dockerhub
-  debug: false
+  debug: "false"
