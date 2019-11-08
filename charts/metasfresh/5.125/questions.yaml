@@ -90,7 +90,7 @@ questions:
 - variable: app.debug
   default: "false"
   description: "Start Java for DEBUG"
-  type: boolean
+  type: string
   required: true
   label: Start Java for DEBUG
   group: "APP Settings"
