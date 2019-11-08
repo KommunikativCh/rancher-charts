@@ -42,6 +42,9 @@ spec:
       - name: {{ template "app.fullname" . }}
         image: "{{ template "app.image" . }}"
         imagePullPolicy: {{ default "" .Values.app.image.pullPolicy | quote }}
+        env:
+        - name: DEBUG
+          value: {{ .Values.app.debug }}
         ports:
         - name: app
           containerPort: {{ .Values.app.port }}

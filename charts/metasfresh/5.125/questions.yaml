@@ -87,6 +87,13 @@ questions:
   required: true
   label: Transfer Sidecar Enabled
   group: "APP Settings"
+- variable: app.debug
+  default: "false"
+  description: "Start Java for DEBUG"
+  type: boolean
+  required: true
+  label: Start Java for DEBUG
+  group: "APP Settings"
 
 - variable: search.persistence.enabled
   default: "false"
