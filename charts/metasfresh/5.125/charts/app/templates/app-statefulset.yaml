@@ -44,7 +44,7 @@ spec:
         imagePullPolicy: {{ default "" .Values.app.image.pullPolicy | quote }}
         env:
         - name: DEBUG_ENABLED
-          value: {{ .Values.app.debug }}
+          value: "{{ .Values.app.debug }}"
         ports:
         - name: app
           containerPort: {{ .Values.app.port }}
