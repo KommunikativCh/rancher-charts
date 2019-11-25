@@ -1,0 +1,61 @@
+## kommunikativch metasfresh-app image version
+## ref: https://cloud.docker.com/repository/docker/kommunikativch/metasfresh-app/tags
+##
+webapi:
+  replicas: 1
+  image:
+    registry: docker.io
+    repository: kommunikativch/metasfresh-webapi
+    tag: "5.128"
+    ## Specify a imagePullPolicy
+    ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+    ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+    ##
+    pullPolicy: Always
+    ## Optionally specify an array of imagePullSecrets.
+    ## Secrets must be manually created in the namespace.
+    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+    ##
+    pullSecrets:
+      - kommunikativch-dockerhub
+
+  podLabels: {}
+  ## app resource requests and limits
+  ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+  # resources:
+  #   requests:
+  #     memory: 256Mi
+  #     cpu: 100m
+
+  ## app Node labels and tolerations for pod assignment
+  ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector
+  ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#taints-and-tolerations-beta-feature
+  # nodeSelector: {"beta.kubernetes.io/arch": "amd64"}
+  # tolerations: []
+  ## metasfresh-app pod annotations
+  podAnnotations: {}
+
+  port: 8080
+  persistence:
+    enabled: true
+    log:
+
+      ## The path the volume will be mounted at, useful when using different
+      ## metasfresh-app images.
+      path: /opt/metasfresh-webui-api/log
+
+      ## The subdirectory of the volume to mount to, useful in dev environments and one PV for multiple services.
+      subPath: webapi/log
+
+      ## db data Persistent Volume Storage Class
+      ## If defined, storageClassName: <storageClass>
+      ## If set to "-", storageClassName: "", which disables dynamic provisioning
+      ## If undefined (the default) or set to null, no storageClassName spec is
+      ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+      ##   GKE, AWS & OpenStack)
+      ##
+      storageClass: ""
+      accessModes:
+      - ReadWriteOnce
+      size: 10Gi
+      volumeName: ""

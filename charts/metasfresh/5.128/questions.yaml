@@ -1,0 +1,201 @@
+categories:
+- KeyValue
+- Database
+questions:
+- variable: db.persistence.enabled
+  default: "false"
+  description: "Use persistent storage"
+  type: boolean
+  required: true
+  label: Persistent Volume Enabled
+  show_subquestion_if: true
+  group: "DB Settings"
+  subquestions:
+  - variable: db.persistence.dbData.volumeName
+    default: "vol-metasfresh-db-data"
+    description: "Persistent volume DB Data volume Name"
+    type: string
+    label: Volume Name
+    required: true
+  - variable: db.persistence.log.volumeName
+    default: "vol-metasfresh-db-log"
+    description: "Persistent volume DB Log volume Name"
+    type: string
+    label: Volume Name
+    required: true
+- variable: db.persistence.dbData.size
+  default: "20Gi" 
+  description: "volume DB Data volume size"
+  type: string
+  label: Volume data Size
+  required: true
+  group: "DB Settings"
+- variable: db.persistence.log.size
+  default: "10Gi"
+  description: "volume DB LOG volume size"
+  type: string
+  label: Volume log Size
+  required: true
+  group: "DB Settings"
+- variable: db.transfer.enabled
+  default: "false"
+  description: "Use transfer sidecar"
+  type: boolean
+  required: true
+  label: Transfer Sidecar Enabled
+  group: "DB Settings"
+
+- variable: app.persistence.enabled
+  default: "false"
+  description: "Use persistent storage"
+  type: boolean
+  required: true
+  label: Persistent Volume Enabled
+  show_subquestion_if: true
+  group: "APP Settings"
+  subquestions:
+  - variable: app.persistence.log.volumeName
+    default: "vol-metasfresh-app-log"
+    description: "Persistent volume APP Log volume Name"
+    type: string
+    label: Volume Name
+    required: true
+  - variable: app.persistence.reports.volumeName
+    default: "vol-metasfresh-app-reports"
+    description: "Persistent volume APP Reports volume Name"
+    type: string
+    label: Volume Name
+    required: true
+- variable: app.persistence.log.size
+  default: "10Gi" 
+  description: "volume APP Log volume size"
+  type: string
+  label: Volume LOG Size
+  required: true
+  group: "APP Settings"
+- variable: app.persistence.reports.size
+  default: "10Gi"
+  description: "volume DB Reports volume size"
+  type: string
+  label: Volume Reports Size
+  required: true
+  group: "APP Settings"
+- variable: app.transfer.enabled
+  default: "false"
+  description: "Use transfer sidecar"
+  type: boolean
+  required: true
+  label: Transfer Sidecar Enabled
+  group: "APP Settings"
+- variable: app.debug
+  default: "false"
+  description: "Start Java for DEBUG"
+  type: string
+  required: true
+  label: Start Java for DEBUG
+  group: "APP Settings"
+
+- variable: search.persistence.enabled
+  default: "false"
+  description: "Use persistent storage"
+  type: boolean
+  required: true
+  label: Persistent Volume Enabled
+  show_subquestion_if: true
+  group: "SEARCH Settings"
+  subquestions:
+  - variable: search.persistence.searchData.volumeName
+    default: "vol-metasfresh-search-search-data"
+    description: "Persistent volume SEARCH Data volume Name"
+    type: string
+    label: Volume SEARCH Data Name
+    required: true
+- variable: search.persistence.searchData.size
+  default: "10Gi" 
+  description: "volume SEARCH Data volume size"
+  type: string
+  label: Volume SEARCH Data Size
+  required: true
+  group: "SEARCH Settings"
+- variable: search.transfer.enabled
+  default: "false"
+  description: "Use transfer sidecar"
+  type: boolean
+  required: true
+  label: Transfer Sidecar Enabled
+  group: "SEARCH Settings"
+  
+- variable: rabbitmq.persistence.enabled
+  default: "false"
+  description: "Use persistent storage"
+  type: boolean
+  required: true
+  label: Persistent Volume Enabled
+  show_subquestion_if: true
+  group: "RABBITMQ Settings"
+  subquestions:
+  - variable: rabbitmq.persistence.log.volumeName
+    default: "vol-metasfresh-rabbitmq-log-data"
+    description: "Persistent volume RABBITMQ Log volume Name"
+    type: string
+    label: Volume RABBITMQ Log Name
+    required: true
+- variable: rabbitmq.persistence.log.size
+  default: "10Gi" 
+  description: "volume RABBITMQ Log volume size"
+  type: string
+  label: Volume RABBITMQ Log Size
+  required: true
+  group: "RABBITMQ Settings"
+  
+- variable: webapi.persistence.enabled
+  default: "false"
+  description: "Use persistent storage"
+  type: boolean
+  required: true
+  label: Persistent Volume Enabled
+  show_subquestion_if: true
+  group: "WEBAPI Settings"
+  subquestions:
+  - variable: webapi.persistence.log.volumeName
+    default: "vol-metasfresh-webapi-log-data"
+    description: "Persistent volume WEBAPI Log volume Name"
+    type: string
+    label: Volume RABBITMQ Log Name
+    required: true
+- variable: webapi.persistence.log.size
+  default: "10Gi" 
+  description: "volume WEBAPI Log volume size"
+  type: string
+  label: Volume RABBITMQ Log Size
+  required: true
+  group: "WEBAPI Settings"
+- variable: webui.webui.webapiURL
+  default: "https://kommunikativ.mf.cloud.kommunikativ.ch" 
+  description: "WEBUI URL"
+  type: string
+  label: Webui URL
+  required: true
+  group: "WEBUI Settings"
+- variable: webui.webui.headerTitle
+  default: "Example GmbH" 
+  description: "WEBUI Header Title"
+  type: string
+  label: WEBUI Header Title
+  required: true
+  group: "WEBUI Settings"
+- variable: webui.webui.imageURL
+  default: "https://image.kommunikativ.ch/kommunikativ-ch/metasfresh/metasfresh_logo_green_thumb.png" 
+  description: "WEBUI Image URL"
+  type: string
+  label: Webui Image URL
+  required: true
+  group: "WEBUI Settings"
+- variable: webui.webui.faviconURL
+  default: "https://image.kommunikativ.ch/kommunikativ-ch/metasfresh/favicon.png" 
+  description: "WEBUI Favicon URL"
+  type: string
+  label: Webui Favicon URL
+  required: true
+  group: "WEBUI Settings"
+  
