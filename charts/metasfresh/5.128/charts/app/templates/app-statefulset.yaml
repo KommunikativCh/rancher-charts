@@ -48,8 +48,6 @@ spec:
         ports:
         - name: app
           containerPort: {{ .Values.app.port }}
-        - name: activemq
-          containerPort: {{ .Values.app.portActivemq }}
         - name: debug
           containerPort: {{ .Values.app.portDebug }}
         volumeMounts:

@@ -15,7 +15,7 @@ spec:
     targetPort: app
   - name: activemq
     port: 61616
-    targetPort: activemq
+    targetPort: 61616
   selector:
     app: {{ template "app.name" . }}
     release: "{{ .Release.Name }}"
