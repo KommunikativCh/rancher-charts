@@ -100,3 +100,5 @@ app:
       pullSecrets:
         - kommunikativch-dockerhub
   debug: "false"
+  dbExtHost: "db"
+  appExtHost: "app"

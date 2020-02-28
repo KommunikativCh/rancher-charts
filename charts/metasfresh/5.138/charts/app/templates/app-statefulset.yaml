@@ -45,6 +45,10 @@ spec:
         env:
         - name: DEBUG_ENABLED
           value: "{{ .Values.debug }}"
+        - name: DB_EXT_HOST
+          value: "{{ .Values.app.dbExtHost }}"
+        - name: APP_EXT_HOST
+          value: "{{ .Values.app.appExtHost }}"
         ports:
         - name: app
           containerPort: {{ .Values.app.port }}
