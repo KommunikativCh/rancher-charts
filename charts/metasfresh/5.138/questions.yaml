@@ -94,6 +94,20 @@ questions:
   required: true
   label: Start Java for DEBUG
   group: "APP Settings"
+- variable: app.dbExtHost
+  default: "db"
+  description: "Ext DB Host"
+  type: string
+  required: true
+  label: Ext DB Host
+  group: "APP Settings"
+- variable: app.appExtHost
+  default: "app"
+  description: "Ext APP Host"
+  type: string
+  required: true
+  label: Ext APP Host
+  group: "APP Settings"
 
 - variable: search.persistence.enabled
   default: "false"
