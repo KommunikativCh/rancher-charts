@@ -46,3 +46,11 @@ Return the proper image name for Transfer container
 {{- $tag := .Values.app.transfer.image.tag | default "latest" -}}
 {{- printf "%s:%s" .Values.app.transfer.image.repository $tag -}}
 {{- end -}}
+
+{{/*
+Return the proper image name for Reports container
+*/}}
+{{- define "app.reports.image" -}}
+{{- $tag := .Values.app.reports.image.tag | default "latest" -}}
+{{- printf "%s:%s" .Values.app.reports.image.repository $tag -}}
+{{- end -}}
