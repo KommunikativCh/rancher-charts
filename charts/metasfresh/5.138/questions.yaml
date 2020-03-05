@@ -87,6 +87,13 @@ questions:
   required: true
   label: Transfer Sidecar Enabled
   group: "APP Settings"
+- variable: app.reports.enabled
+  default: "true"
+  description: "Use reports sidecar"
+  type: boolean
+  required: true
+  label: Reports Sidecar Enabled
+  group: "APP Settings"
 - variable: app.debug
   default: "false"
   description: "Start Java for DEBUG"

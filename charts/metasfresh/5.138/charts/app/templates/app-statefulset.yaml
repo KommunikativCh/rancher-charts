@@ -56,6 +56,10 @@ spec:
           containerPort: {{ .Values.app.portActivemq }}
         - name: debug
           containerPort: {{ .Values.app.portDebug }}
+        {{- if .Values.reports.enabled }}
+        - name: reports
+          containerPort: {{ .Values.app.portReports }}
+        {{- end}}
         volumeMounts:
         - name: log
           mountPath: {{ .Values.app.persistence.log.path }}
@@ -91,6 +95,24 @@ spec:
         - name: reports
           mountPath: /app-reports
           subPath: ""
+      {{- end}}
+      {{- if .Values.reports.enabled }}
+      - name: "reports"
+        image: "{{ template "app.reports.image" . }}"
+        imagePullPolicy: {{ default "" .Values.app.reports.image.pullPolicy | quote }}
+        securityContext:
+          allowPrivilegeEscalation: true
+          capabilities:
+            add:
+              - SYS_ADMIN
+          privileged: true
+          readOnlyRootFilesystem: false
+        stdin: true
+        tty: true           
+        volumeMounts:
+        - name: reports
+          mountPath: {{ .Values.app.persistence.reports.path }}
+          subPath: {{ .Release.Namespace }}/{{ .Values.app.persistence.reports.subPath }}
       {{- end}}
       volumes:
       - name: log
