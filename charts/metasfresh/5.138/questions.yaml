@@ -94,19 +94,12 @@ questions:
   required: true
   label: Reports Sidecar Enabled
   group: "APP Settings"
-- variable: app.reports.ftpUser
+- variable: app.reports.sftpUsers
   default: "false"
-  description: "reports FTP User"
+  description: "reports SFTP Users"
   type: string
   required: true
-  label: Reports FTP User
-  group: "APP Settings"
-- variable: app.reports.ftpPass
-  default: "false"
-  description: "reports FTP Password"
-  type: string
-  required: true
-  label: Reports FTP Password
+  label: Reports SFTP Users
   group: "APP Settings"
 - variable: app.debug
   default: "false"

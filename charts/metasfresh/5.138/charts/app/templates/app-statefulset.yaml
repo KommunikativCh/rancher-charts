@@ -101,10 +101,8 @@ spec:
         image: "{{ template "app.reports.image" . }}"
         imagePullPolicy: {{ default "" .Values.app.reports.image.pullPolicy | quote }}
         env:
-        - name: FTP_USER
-          value: "{{ .Values.reports.ftpUser }}"
-        - name: FTP_PASS
-          value: "{{ .Values.reports.ftpPass }}"
+        - name: SFTP_USERS
+          value: "{{ .Values.reports.sftpUsers }}"
         volumeMounts:
         - name: reports
           mountPath: {{ .Values.app.persistence.reports.path }}
