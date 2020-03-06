@@ -4,5 +4,5 @@ metadata:
   name: app-reports-ftp-configmap
   namespace: {{ .Release.Namespace }}
   data:
-  user.conf: |-
-    reports:reports:1020:100:/opt/metasfresh/reportscustom
+    user.conf: |-
+      reports:reports:1020:100:/opt/metasfresh/reportscustom
