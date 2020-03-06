@@ -103,7 +103,6 @@ app:
   reports:
     enabled: true
     image:
-      registry: registry.hub.docker.com
       repository: fauria/docker-vsftpd
       tag: ""
       ## Specify a imagePullPolicy
@@ -111,12 +110,6 @@ app:
       ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
       ##
       pullPolicy: Always
-      ## Optionally specify an array of imagePullSecrets.
-      ## Secrets must be manually created in the namespace.
-      ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
-      ##
-      pullSecrets:
-        - kommunikativch-dockerhub
     ftpUser: reports
     ftpPass: reports
   debug: "false"
