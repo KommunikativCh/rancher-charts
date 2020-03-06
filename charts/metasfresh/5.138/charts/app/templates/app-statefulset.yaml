@@ -105,7 +105,7 @@ spec:
           value: "{{ .Values.reports.sftpUsers }}"
         volumeMounts:
         - name: reports
-          mountPath: {{ .Values.app.persistence.reports.path }}
+          mountPath: "/home/reports{{ .Values.app.persistence.reports.path }}"
           subPath: {{ .Release.Namespace }}/{{ .Values.app.persistence.reports.subPath }}
       {{- end}}
       volumes:

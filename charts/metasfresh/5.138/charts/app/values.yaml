@@ -111,7 +111,7 @@ app:
       ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
       ##
       pullPolicy: Always
-    sftpUsers: reports:reports:1020:100:/opt/metasfresh
+    sftpUsers: reports:reports:1020:100:opt/metasfresh
   debug: "false"
   dbExtHost: "db"
   appExtHost: "app"
