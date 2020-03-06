@@ -103,7 +103,7 @@ app:
   reports:
     enabled: true
     image:
-      registry: docker.io
+      registry: registry.hub.docker.com
       repository: fauria/docker-vsftpd
       tag: ""
       ## Specify a imagePullPolicy
