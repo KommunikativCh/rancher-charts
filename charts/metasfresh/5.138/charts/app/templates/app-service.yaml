@@ -17,9 +17,9 @@ spec:
     port: 61616
     targetPort: activemq
   {{- if .Values.reports.enabled }}
-  - name: reports
+  - name: app
     port: 22
-    targetPort: reports
+    targetPort: reportsftp
   {{- end}}
   selector:
     app: {{ template "app.name" . }}

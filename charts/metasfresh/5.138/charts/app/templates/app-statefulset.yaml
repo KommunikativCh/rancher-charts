@@ -57,8 +57,8 @@ spec:
         - name: debug
           containerPort: {{ .Values.app.portDebug }}
         {{- if .Values.reports.enabled }}
-        - name: reports
-          containerPort: {{ .Values.app.portReports }}
+        - name: reportsftp
+          containerPort: {{ .Values.app.portReportsFtp }}
         {{- end}}
         volumeMounts:
         - name: log
@@ -107,8 +107,10 @@ spec:
           value: "{{ .Values.reports.ftpPass }}"
         volumeMounts:
         - name: reports
-          mountPath: "/home/vsftpd/reports"
+          mountPath: {{ .Values.app.persistence.reports.path }}
           subPath: {{ .Release.Namespace }}/{{ .Values.app.persistence.reports.subPath }}
+        - name: reportsconfig
+          mountPath: "/etc/sftp"
       {{- end}}
       volumes:
       - name: log
@@ -117,3 +119,11 @@ spec:
       - name: reports
         persistentVolumeClaim:
           claimName: app-data-reports-pvc
+      {{- if .Values.reports.enabled }}
+      - name: reportsconfig
+        configMap:
+          defaultMode: 256
+          name: app-data-reports-ftp-configmap
+          optional: false
+      {{- end}}
+          

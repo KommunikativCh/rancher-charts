@@ -38,7 +38,7 @@ app:
   port: 8282
   portActivemq: 61616
   portDebug: 8788
-  portReports: 22
+  portReportsFtp: 22
   persistence:
     enabled: true
     log:
@@ -104,7 +104,7 @@ app:
     enabled: true
     image:
       registry: docker.io
-      repository: fauria/vsftpd
+      repository: atmoz/sftp
       tag: "latest"
       ## Specify a imagePullPolicy
       ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
