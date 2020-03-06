@@ -100,15 +100,11 @@ spec:
       - name: "{{ template "app.fullname" . }}-reports"
         image: "{{ template "app.reports.image" . }}"
         imagePullPolicy: {{ default "" .Values.app.reports.image.pullPolicy | quote }}
-        securityContext:
-          allowPrivilegeEscalation: true
-          capabilities:
-            add:
-              - SYS_ADMIN
-          privileged: true
-          readOnlyRootFilesystem: false
-        stdin: true
-        tty: true           
+        env:
+        - name: FTP_USER
+          value: "{{ .Values.reports.ftpUser }}"
+        - name: FTP_PASS
+          value: "{{ .Values.reports.ftpPass }}"
         volumeMounts:
         - name: reports
           mountPath: {{ .Values.app.persistence.reports.path }}
