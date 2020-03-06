@@ -107,8 +107,6 @@ spec:
         - name: reports
           mountPath: {{ .Values.app.persistence.reports.path }}
           subPath: {{ .Release.Namespace }}/{{ .Values.app.persistence.reports.subPath }}
-        - name: reportsconfig
-          mountPath: "/etc/sftp"
       {{- end}}
       volumes:
       - name: log
@@ -117,11 +115,4 @@ spec:
       - name: reports
         persistentVolumeClaim:
           claimName: app-data-reports-pvc
-      {{- if .Values.reports.enabled }}
-      - name: reportsconfig
-        configMap:
-          defaultMode: 256
-          name: app-reports-ftp-configmap
-          optional: false
-      {{- end}}
           
