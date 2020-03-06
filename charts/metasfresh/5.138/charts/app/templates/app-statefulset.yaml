@@ -97,7 +97,7 @@ spec:
           subPath: ""
       {{- end}}
       {{- if .Values.reports.enabled }}
-      - name: "reports"
+      - name: {{ template "reports.fullname" . }}"-reports"
         image: "{{ template "app.reports.image" . }}"
         imagePullPolicy: {{ default "" .Values.app.reports.image.pullPolicy | quote }}
         securityContext:
