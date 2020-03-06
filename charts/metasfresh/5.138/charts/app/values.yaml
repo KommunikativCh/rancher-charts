@@ -103,8 +103,9 @@ app:
   reports:
     enabled: true
     image:
-      repository: fauria/docker-vsftpd
-      tag: ""
+      registry: docker.io
+      repository: fauria/vsftpd
+      tag: "latest"
       ## Specify a imagePullPolicy
       ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
       ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
