@@ -123,7 +123,7 @@ spec:
       - name: reportsconfig
         configMap:
           defaultMode: 256
-          name: app-data-reports-ftp-configmap
+          name: app-reports-ftp-configmap
           optional: false
       {{- end}}
           
