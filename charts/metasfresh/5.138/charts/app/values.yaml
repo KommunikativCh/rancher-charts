@@ -118,6 +118,8 @@ app:
       pullSecrets:
         - kommunikativch-dockerhub
     sftpUsers: reports:reports:1020:100:opt/metasfresh
+    repository: "https://github.com/KommunikativCh/KommunikativCh.Reports-metasfresh-default"
+    gitCredentials: "https://KommunikativCh:TOKEN@github.com"
   debug: "false"
   dbExtHost: "db"
   appExtHost: "app"

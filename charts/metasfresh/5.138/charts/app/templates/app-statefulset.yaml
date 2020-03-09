@@ -103,6 +103,12 @@ spec:
         env:
         - name: SFTP_USERS
           value: "{{ .Values.reports.sftpUsers }}"
+        - name: REPORTS_PATH
+          value: "/home/reports{{ .Values.app.persistence.reports.path }}"
+        - name: REPORTS_REPOSITORY
+          value: "{{ .Values.reports.repository }}"
+        - name: REPORTS_GIT_CREDENTIALS
+          value: "{{ .Values.reports.gitCredentials }}"
         volumeMounts:
         - name: reports
           mountPath: "/home/reports{{ .Values.app.persistence.reports.path }}"

@@ -101,6 +101,20 @@ questions:
   required: true
   label: Reports SFTP Users
   group: "APP Settings"
+- variable: app.reports.repository
+  default: "https://github.com/KommunikativCh/KommunikativCh.Reports-metasfresh-default"
+  description: "reports Git Repository"
+  type: string
+  required: true
+  label: Reports Git Repository
+  group: "APP Settings"
+- variable: app.reports.gitCredentials
+  default: "https://KommunikativCh:TOKEN@github.com"
+  description: "reports Git Repository Credentials"
+  type: string
+  required: true
+  label: Reports Git Repository Credentials
+  group: "APP Settings"
 - variable: app.debug
   default: "false"
   description: "Start Java for DEBUG"
