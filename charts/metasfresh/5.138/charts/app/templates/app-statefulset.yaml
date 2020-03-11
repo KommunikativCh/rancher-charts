@@ -55,6 +55,13 @@ spec:
         - name: reports
           mountPath: {{ .Values.app.reports.reports.path }}
           subPath: {{ .Release.Namespace }}/{{ .Values.app.reports.reports.subPath }}
+        readinessProbe:
+          exec:
+            command:
+             - ls
+             - /home/reports/custom/de
+          initialDelaySeconds: 5
+          periodSeconds: 5
       {{- end}}
       containers:
       {{- if not .Values.transfer.enabled }}
