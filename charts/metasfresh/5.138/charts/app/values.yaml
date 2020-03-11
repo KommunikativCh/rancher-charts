@@ -124,7 +124,7 @@ app:
       path: /home/reports/custom
 
       ## The subdirectory of the volume to mount to, useful in dev environments and one PV for multiple services.
-      subPath: app/reports
+      subPath: app/reports/custom
     sftpUsers: reports:reports:1020:100:opt/metasfresh
     repository: "https://github.com/KommunikativCh/KommunikativCh.Reports-metasfresh-default"
     gitCredentials: "https://KommunikativCh:TOKEN@github.com"
