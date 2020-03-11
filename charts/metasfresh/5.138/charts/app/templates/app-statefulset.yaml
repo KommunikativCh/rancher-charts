@@ -55,7 +55,7 @@ spec:
         - name: reports
           mountPath: {{ .Values.app.reports.reports.path }}
           subPath: {{ .Release.Namespace }}/{{ .Values.app.reports.reports.subPath }}
-        readinessProbe:
+        startupProbe:
           exec:
             command:
              - ls
