@@ -55,13 +55,7 @@ spec:
         - name: reports
           mountPath: {{ .Values.app.reports.reports.path }}
           subPath: {{ .Release.Namespace }}/{{ .Values.app.reports.reports.subPath }}
-        startupProbe:
-          exec:
-            command:
-             - ls
-             - /home/reports/custom/de
-          initialDelaySeconds: 5
-          periodSeconds: 5
+        command: ['sh', '-c', 'until [ -d /home/reports/custom/de ]; do echo waiting for reports; sleep 2; done;']
       {{- end}}
       containers:
       {{- if not .Values.transfer.enabled }}
