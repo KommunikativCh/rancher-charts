@@ -66,10 +66,10 @@ app:
 
       ## The path the volume will be mounted at, useful when using different
       ## metasfresh-app images.
-      path: /opt/metasfresh/reportscustom
+      path: /opt/metasfresh/reports/de/metas/custom
 
       ## The subdirectory of the volume to mount to, useful in dev environments and one PV for multiple services.
-      subPath: app/reports
+      subPath: app/reports/custom/de/metas/custom
 
       ## db data Persistent Volume Storage Class
       ## If defined, storageClassName: <storageClass>
@@ -117,6 +117,14 @@ app:
       ##
       pullSecrets:
         - kommunikativch-dockerhub
+    reports:
+
+      ## The path the volume will be mounted at, useful when using different
+      ## metasfresh-app images.
+      path: /home/reports/custom
+
+      ## The subdirectory of the volume to mount to, useful in dev environments and one PV for multiple services.
+      subPath: app/reports
     sftpUsers: reports:reports:1020:100:opt/metasfresh
     repository: "https://github.com/KommunikativCh/KommunikativCh.Reports-metasfresh-default"
     gitCredentials: "https://KommunikativCh:TOKEN@github.com"

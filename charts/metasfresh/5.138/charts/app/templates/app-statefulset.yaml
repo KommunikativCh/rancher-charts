@@ -66,7 +66,7 @@ spec:
           subPath: {{ .Release.Namespace }}/{{ .Values.app.persistence.log.subPath }}
         - name: reports
           mountPath: {{ .Values.app.persistence.reports.path }}
-          subPath: {{ .Release.Namespace }}/{{ .Values.app.persistence.reports.subPath }}
+          subPath: "{{ .Release.Namespace }}/{{ .Values.app.persistence.reports.subPath }}"
         resources:
           limits:
             memory: 1Gi
@@ -104,15 +104,15 @@ spec:
         - name: SFTP_USERS
           value: "{{ .Values.reports.sftpUsers }}"
         - name: REPORTS_PATH
-          value: "/home/reports{{ .Values.app.persistence.reports.path }}"
+          value: "{{ .Values.reports.reports.path }}"
         - name: REPORTS_REPOSITORY
           value: "{{ .Values.reports.repository }}"
         - name: REPORTS_GIT_CREDENTIALS
           value: "{{ .Values.reports.gitCredentials }}"
         volumeMounts:
         - name: reports
-          mountPath: "/home/reports{{ .Values.app.persistence.reports.path }}"
-          subPath: {{ .Release.Namespace }}/{{ .Values.app.persistence.reports.subPath }}
+          mountPath: {{ .Values.app.reports.reports.path }}
+          subPath: {{ .Release.Namespace }}/{{ .Values.app.reports.reports.subPath }}
       {{- end}}
       volumes:
       - name: log
