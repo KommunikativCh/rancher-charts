@@ -39,7 +39,7 @@ spec:
       {{- end}}
       initContainers:
       {{- if .Values.reports.enabled }}
-      - name: "{{ template "app.fullname" . }}-reports"
+      - name: "{{ template "app.fullname" . }}-reports-init"
         image: "{{ template "app.reports.image" . }}"
         imagePullPolicy: {{ default "" .Values.app.reports.image.pullPolicy | quote }}
         env:
@@ -115,6 +115,24 @@ spec:
         - name: reports
           mountPath: /app-reports
           subPath: ""
+      {{- end}}
+      {{- if .Values.reports.enabled }}
+      - name: "{{ template "app.fullname" . }}-reports"
+        image: "{{ template "app.reports.image" . }}"
+        imagePullPolicy: {{ default "" .Values.app.reports.image.pullPolicy | quote }}
+        env:
+        - name: SFTP_USERS
+          value: "{{ .Values.reports.sftpUsers }}"
+        - name: REPORTS_PATH
+          value: "{{ .Values.reports.reports.path }}"
+        - name: REPORTS_REPOSITORY
+          value: "{{ .Values.reports.repository }}"
+        - name: REPORTS_GIT_CREDENTIALS
+          value: "{{ .Values.reports.gitCredentials }}"
+        volumeMounts:
+        - name: reports
+          mountPath: {{ .Values.app.reports.reports.path }}
+          subPath: {{ .Release.Namespace }}/{{ .Values.app.reports.reports.subPath }}
       {{- end}}
       volumes:
       - name: log
