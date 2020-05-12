@@ -55,7 +55,7 @@ spec:
         - name: reports
           mountPath: {{ .Values.app.reports.reports.path }}
           subPath: {{ .Release.Namespace }}/{{ .Values.app.reports.reports.subPath }}
-        command: ['sh', '-c', '/entrypoint.sh; until [ -d /home/reports/custom/de ]; do echo waiting for reports; sleep 2; done;']
+        command: ['sh', '-c', '/entrypoint.sh none; until [ -d /home/reports/custom/de ]; do echo waiting for reports; sleep 2; done;']
       {{- end}}
       containers:
       {{- if not .Values.transfer.enabled }}
