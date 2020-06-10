@@ -1,0 +1,31 @@
+dependencies:
+  - name: db
+    version: 5.144.0-kommch
+    import-values:
+      - child: db
+        parent: db
+  - name: search
+    version: 5.144.0-kommch
+    import-values:
+      - child: search
+        parent: search
+  - name: rabbitmq
+    version: 5.144.0-kommch
+    import-values:
+      - child: rabbitmq
+        parent: rabbitmq
+  - name: app
+    version: 5.144.0-kommch
+    import-values:
+      - child: app
+        parent: app
+  - name: webapi
+    version: 5.144.0-kommch
+    import-values:
+      - child: webapi
+        parent: webapi
+  - name: webui
+    version: 5.144.0-kommch
+    import-values:
+      - child: webui
+        parent: webui
