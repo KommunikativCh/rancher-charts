@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: rabbitmq-data-log-pvc
+  labels:
+    app: "{{ template "rabbitmq.name" . }}"
+    chart: {{ template "rabbitmq.chart" . }}
+    release: {{ .Release.Name | quote }}
+    heritage: {{ .Release.Service | quote }}
+spec:
+  accessModes:
+  - ReadWriteOnce
+{{- if .Values.persistence.enabled }}      
+  resources:
+    requests:
+      storage: {{ .Values.persistence.log.size  | quote }}
+  storageClassName: ""
+  volumeMode: Filesystem
+  volumeName: {{ .Values.persistence.log.volumeName }}
+{{- else }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.log.size }}
+{{- end }}
