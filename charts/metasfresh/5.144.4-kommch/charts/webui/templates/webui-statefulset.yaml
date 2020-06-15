@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ template "webui.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ template "webui.name" . }}
+    chart: {{ template "webui.chart" . }}
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  selector:
+    matchLabels:
+      release: "{{ .Release.Name }}"
+      app: {{ template "webui.name" . }}
+  serviceName: "webui"  
+  template:
+    metadata:
+      labels:
+        release: "{{ .Release.Name }}"
+        app: {{ template "webui.name" . }}
+{{- if .Values.webui.podLabels }}
+{{ toYaml .Values.webui.podLabels | indent 8 }}
+{{- end }}
+      {{- if .Values.webui.podAnnotations }}
+      annotations:
+{{ toYaml .Values.webui.podAnnotations | indent 8 }}
+      {{- end }}
+    spec:
+      hostAliases:
+      - ip: "127.0.0.1"
+        hostnames:
+        - "webui"
+      {{- if .Values.webui.image.pullSecrets }}
+      imagePullSecrets:
+        {{- range .Values.webui.image.pullSecrets }}
+        - name: {{ . }}
+        {{- end}}
+      {{- end}}
+      containers:
+      - name: {{ template "webui.fullname" . }}
+        image: "{{ template "webui.image" . }}"
+        imagePullPolicy: {{ default "" .Values.webui.image.pullPolicy | quote }}
+        env:
+        - name: WEBAPI_URL
+          value: {{ .Values.webui.webapiURL }}
+        - name: IMAGE_URL
+          value: {{ .Values.webui.imageURL }}
+        - name: FAVICON_URL
+          value: {{ .Values.webui.faviconURL }}
+        - name: HEADER_TITLE
+          value: {{ .Values.webui.headerTitle }}
+        ports:
+        - name: http
+          containerPort: {{ .Values.webui.portHTTP }}
+        - name: https
+          containerPort: {{ .Values.webui.portHTTPS }}
+        resources:
+          limits:
+            memory: 128Mi
+            cpu: "200m"
+          requests:
+            memory: 128Mi
+            cpu: "10m"
+        
