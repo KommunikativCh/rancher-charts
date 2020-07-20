@@ -240,4 +240,11 @@ questions:
   label: Webui Favicon URL
   required: true
   group: "WEBUI Settings"
+- variable: webui.webui.styles
+  default: ".dashboard-wrapper {\n\n}"
+  description: "WEBUI Styles"
+  type: multiline
+  label: Webui Styles
+  required: true
+  group: "WEBUI Settings"
   
