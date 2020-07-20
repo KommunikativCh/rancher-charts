@@ -50,6 +50,8 @@ spec:
           value: {{ .Values.webui.faviconURL }}
         - name: HEADER_TITLE
           value: {{ .Values.webui.headerTitle }}
+        - name: WEBUI_STYLES
+          value: {{ .Values.webui.styles }}
         ports:
         - name: http
           containerPort: {{ .Values.webui.portHTTP }}
