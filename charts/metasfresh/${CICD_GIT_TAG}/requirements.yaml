@@ -1,0 +1,31 @@
+dependencies:
+  - name: db
+    version: 
+    import-values:
+      - child: db
+        parent: db
+  - name: search
+    version: 
+    import-values:
+      - child: search
+        parent: search
+  - name: rabbitmq
+    version: 
+    import-values:
+      - child: rabbitmq
+        parent: rabbitmq
+  - name: app
+    version: 
+    import-values:
+      - child: app
+        parent: app
+  - name: webapi
+    version: 
+    import-values:
+      - child: webapi
+        parent: webapi
+  - name: webui
+    version: 
+    import-values:
+      - child: webui
+        parent: webui
