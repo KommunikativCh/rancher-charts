@@ -51,7 +51,7 @@ spec:
         - name: HEADER_TITLE
           value: {{ .Values.webui.headerTitle }}
         - name: WEBUI_STYLES
-          value: {{ .Values.webui.styles }}
+          value: {{ .Values.webui.styles | quote  }}
         ports:
         - name: http
           containerPort: {{ .Values.webui.portHTTP }}
