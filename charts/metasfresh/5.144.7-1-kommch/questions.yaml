@@ -240,11 +240,18 @@ questions:
   label: Webui Favicon URL
   required: true
   group: "WEBUI Settings"
-- variable: webui.webui.styles
-  default: ".dashboard-wrapper {\n\n}"
-  description: "WEBUI Styles"
+- variable: webui.webui.repository
+  default: "https://github.com/KommunikativCh/KommunikativCh.Rancher-metasfresh-default"
+  description: "WEBUI custom Git Repository"
   type: string
-  label: Webui Styles
   required: true
+  label: WEBUI custom Git Repository
+  group: "WEBUI Settings"
+- variable: webui.webui.gitCredentials
+  default: "https://KommunikativCh:TOKEN@github.com"
+  description: "WEBUI custom Git Repository Credentials"
+  type: string
+  required: true
+  label: WEBUI custom Git Repository Credentials
   group: "WEBUI Settings"
   
