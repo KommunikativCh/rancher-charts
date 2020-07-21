@@ -50,8 +50,10 @@ spec:
           value: {{ .Values.webui.faviconURL }}
         - name: HEADER_TITLE
           value: {{ .Values.webui.headerTitle }}
-        - name: WEBUI_STYLES
-          value: {{ .Values.webui.styles | quote  }}
+        - name: WEBUI_CUSTOM_REPOSITORY
+          value: "{{ .Values.webui.repository }}"
+        - name: WEBUI_CUSTOM_GIT_CREDENTIALS
+          value: "{{ .Values.webui.gitCredentials }}"
         ports:
         - name: http
           containerPort: {{ .Values.webui.portHTTP }}

@@ -41,4 +41,5 @@ webui:
   headerTitle: Example GmbH
   imageURL: https://image.kommunikativ.ch/kommunikativ-ch/metasfresh/metasfresh_logo_green_thumb.png
   faviconURL: https://image.kommunikativ.ch/kommunikativ-ch/metasfresh/favicon.png
-  styles: .dashboard-wrapper {\n\n}
+  repository: "https://github.com/KommunikativCh/KommunikativCh.Rancher-metasfresh-default"
+  gitCredentials: "https://KommunikativCh:TOKEN@github.com"
