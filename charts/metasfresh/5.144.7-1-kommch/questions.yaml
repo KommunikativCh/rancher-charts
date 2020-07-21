@@ -243,7 +243,7 @@ questions:
 - variable: webui.webui.styles
   default: ".dashboard-wrapper {\n\n}"
   description: "WEBUI Styles"
-  type: multiline
+  type: string
   label: Webui Styles
   required: true
   group: "WEBUI Settings"
