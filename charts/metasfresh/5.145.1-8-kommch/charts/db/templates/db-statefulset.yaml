@@ -1,0 +1,90 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ template "db.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ template "db.name" . }}
+    chart: {{ template "db.chart" . }}
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  selector:
+    matchLabels:
+      release: "{{ .Release.Name }}"
+      app: {{ template "db.name" . }}
+  serviceName: "db"  
+  template:
+    metadata:
+      labels:
+        release: "{{ .Release.Name }}"
+        app: {{ template "db.name" . }}
+{{- if .Values.db.podLabels }}
+{{ toYaml .Values.db.podLabels | indent 8 }}
+{{- end }}
+      {{- if .Values.db.podAnnotations }}
+      annotations:
+{{ toYaml .Values.db.podAnnotations | indent 8 }}
+      {{- end }}
+    spec:
+      hostAliases:
+      - ip: "127.0.0.1"
+        hostnames:
+        - "db"
+      {{- if .Values.db.image.pullSecrets }}
+      imagePullSecrets:
+        {{- range .Values.db.image.pullSecrets }}
+        - name: {{ . }}
+        {{- end}}
+      {{- end}}
+      containers:
+      {{- if not .Values.transfer.enabled }}
+      - name: {{ template "db.fullname" . }}
+        image: "{{ template "db.image" . }}"
+        imagePullPolicy: {{ default "" .Values.db.image.pullPolicy | quote }}
+        ports:
+        - name: db
+          containerPort: {{ .Values.db.port }}
+        volumeMounts:
+        - name: db-data
+          mountPath: {{ .Values.db.persistence.dbData.path }}
+          subPath: {{ .Release.Namespace }}/{{ .Values.db.persistence.dbData.subPath }}
+        - name: log
+          mountPath: {{ .Values.db.persistence.log.path }}
+          subPath: {{ .Release.Namespace }}/{{ .Values.db.persistence.log.subPath }}
+        resources:
+          limits:
+            memory: 1Gi
+            cpu: "800m"
+          requests:
+            memory: 1Gi
+            cpu: "10m"
+      {{- end}}
+      {{- if .Values.transfer.enabled }}
+      - name: "transfer"
+        image: "{{ template "db.transfer.image" . }}"
+        imagePullPolicy: {{ default "" .Values.db.transfer.image.pullPolicy | quote }}
+        securityContext:
+          allowPrivilegeEscalation: true
+          capabilities:
+            add:
+              - SYS_ADMIN
+          privileged: true
+          readOnlyRootFilesystem: false
+        stdin: true
+        tty: true           
+        volumeMounts:
+        - name: db-data
+          mountPath: "/db-data"
+          subPath: ""
+        - name: log
+          mountPath: "/db-log"
+          subPath: ""
+      {{- end}}
+      volumes:
+      - name: db-data
+        persistentVolumeClaim:
+          claimName: db-data-db-pvc
+      - name: log
+        persistentVolumeClaim:
+          claimName: db-data-log-pvc
