@@ -76,7 +76,7 @@ app:
         path: /opt/metasfresh/reports/de/metas/kommunikativ
 
         ## The subdirectory of the volume to mount to, useful in dev environments and one PV for multiple services.
-        subPath: app/reports/custom/de/metas/kommunikativ
+        subPath: app/reports/kommunikativ/de/metas/kommunikativ
 
       ## db data Persistent Volume Storage Class
       ## If defined, storageClassName: <storageClass>
