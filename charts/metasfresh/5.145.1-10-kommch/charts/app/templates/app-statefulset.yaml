@@ -64,7 +64,7 @@ spec:
         - name: reports
           mountPath: {{ .Values.app.reports.reports.kommunikativ.path }}
           subPath: {{ .Release.Namespace }}/{{ .Values.app.reports.reports.kommunikativ.subPath }}
-        command: ['sh', '-c', '/entrypoint.sh dummy; until [ -d /home/reports/custom/de && -d /home/reports/kommunikativ/de ]; do echo waiting for reports; sleep 2; done;']
+        command: ['sh', '-c', '/entrypoint.sh dummy; until [ -d /home/reports/custom/de ]; do echo waiting for reports; sleep 2; done; until [ -d /home/reports/kommunikativ/de ]; do echo waiting for reports; sleep 2; done;']
       {{- end}}
       containers:
       {{- if not .Values.transfer.enabled }}
