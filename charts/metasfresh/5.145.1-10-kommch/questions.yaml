@@ -101,19 +101,33 @@ questions:
   required: true
   label: Reports SFTP Users
   group: "APP Settings"
-- variable: app.reports.repository
+- variable: app.reports.custom.repository
   default: "https://github.com/KommunikativCh/KommunikativCh.Reports-metasfresh-default"
-  description: "reports Git Repository"
+  description: "reports Custom Git Repository"
   type: string
   required: true
   label: Reports Git Repository
   group: "APP Settings"
-- variable: app.reports.gitCredentials
-  default: "https://KommunikativCh:TOKEN@github.com"
-  description: "reports Git Repository Credentials"
+- variable: app.reports.kommunikativ.repository
+  default: "https://github.com/KommunikativCh/KommunikativCh.Reports-metasfresh-prod"
+  description: "reports kommunikativ Git Repository"
   type: string
   required: true
-  label: Reports Git Repository Credentials
+  label: Reports kommunikativ Git Repository
+  group: "APP Settings"
+- variable: app.reports.custom.gitCredentials
+  default: "https://KommunikativCh:TOKEN@github.com"
+  description: "reports Custom Git Repository Credentials"
+  type: string
+  required: true
+  label: Reports CUSTOM Git Repository Credentials
+  group: "APP Settings"
+- variable: app.reports.kommunikativ.gitCredentials
+  default: "https://KommunikativCh:TOKEN@github.com"
+  description: "reports Kommunikativ Git Repository Credentials"
+  type: string
+  required: true
+  label: Reports KOMMUNIKATIV Git Repository Credentials
   group: "APP Settings"
 - variable: app.debug
   default: "false"
