@@ -61,7 +61,7 @@ spec:
         - name: reports
           mountPath: {{ .Values.app.reports.reports.custom.path }}
           subPath: {{ .Release.Namespace }}/{{ .Values.app.reports.reports.custom.subPath }}
-        - name: reportsKommunikativ
+        - name: reports
           mountPath: {{ .Values.app.reports.reports.kommunikativ.path }}
           subPath: {{ .Release.Namespace }}/{{ .Values.app.reports.reports.kommunikativ.subPath }}
         command: ['sh', '-c', '/entrypoint.sh dummy; until [ -d /home/reports/cutom/de && -d /home/reports/kommunikativ/de ]; do echo waiting for reports; sleep 2; done;']
@@ -151,7 +151,7 @@ spec:
         - name: reports
           mountPath: {{ .Values.app.reports.reports.custom.path }}
           subPath: {{ .Release.Namespace }}/{{ .Values.app.reports.reports.custom.subPath }}
-        - name: reportsKommunikativ
+        - name: reports
           mountPath: {{ .Values.app.reports.reports.kommunikativ.path }}
           subPath: {{ .Release.Namespace }}/{{ .Values.app.reports.reports.kommunikativ.subPath }}
       {{- end}}
