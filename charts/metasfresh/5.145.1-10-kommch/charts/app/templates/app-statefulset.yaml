@@ -45,9 +45,9 @@ spec:
         env:
         - name: SFTP_USERS
           value: "{{ .Values.reports.sftpUsers }}"
-        - name: REPORTS_PATH
+        - name: REPORTS_CUSTOM_PATH
           value: "{{ .Values.reports.reports.custom.path }}"
-        - name: REPORTS_REPOSITORY
+        - name: REPORTS_CUSTOM_REPOSITORY
           value: "{{ .Values.reports.reports.custom.repository }}"
         - name: REPORTS_KOMMUNIKATIV_PATH
           value: "{{ .Values.reports.reports.kommunikativ.path }}"
