@@ -94,11 +94,11 @@ spec:
           mountPath: {{ .Values.app.persistence.log.path }}
           subPath: {{ .Release.Namespace }}/{{ .Values.app.persistence.log.subPath }}
         - name: reports
-          mountPath: {{ .Values.app.persistence.reports.path }}
-          subPath: "{{ .Release.Namespace }}/{{ .Values.app.persistence.reports.subPath }}"
+          mountPath: {{ .Values.app.persistence.reports.cutom.path }}
+          subPath: "{{ .Release.Namespace }}/{{ .Values.app.persistence.reports.custom.subPath }}"
         - name: reports
-          mountPath: {{ .Values.app.persistence.reports.pathKommunikativ }}
-          subPath: "{{ .Release.Namespace }}/{{ .Values.app.persistence.reports.subPathKommunikativ }}"
+          mountPath: {{ .Values.app.persistence.reports.kommunikativ.path }}
+          subPath: "{{ .Release.Namespace }}/{{ .Values.app.persistence.reports.kommunikativ.subPath }}"
         resources:
           limits:
             memory: 1Gi
