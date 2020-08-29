@@ -94,7 +94,7 @@ spec:
           mountPath: {{ .Values.app.persistence.log.path }}
           subPath: {{ .Release.Namespace }}/{{ .Values.app.persistence.log.subPath }}
         - name: reports
-          mountPath: {{ .Values.app.persistence.reports.cutom.path }}
+          mountPath: {{ .Values.app.persistence.reports.custom.path }}
           subPath: "{{ .Release.Namespace }}/{{ .Values.app.persistence.reports.custom.subPath }}"
         - name: reports
           mountPath: {{ .Values.app.persistence.reports.kommunikativ.path }}
