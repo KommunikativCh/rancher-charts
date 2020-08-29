@@ -96,7 +96,7 @@ spec:
         - name: reports
           mountPath: {{ .Values.app.persistence.reports.path }}
           subPath: "{{ .Release.Namespace }}/{{ .Values.app.persistence.reports.subPath }}"
-        - name: reportsKommunikativ
+        - name: reports
           mountPath: {{ .Values.app.persistence.reports.pathKommunikativ }}
           subPath: "{{ .Release.Namespace }}/{{ .Values.app.persistence.reports.subPathKommunikativ }}"
         resources:
