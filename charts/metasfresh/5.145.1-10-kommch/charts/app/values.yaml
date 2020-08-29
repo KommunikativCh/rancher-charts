@@ -70,7 +70,7 @@ app:
 
         ## The subdirectory of the volume to mount to, useful in dev environments and one PV for multiple services.
         subPath: app/reports/custom/de/metas/custom
-      kommunikatv:
+      kommunikativ:
         ## The path the volume will be mounted at, useful when using different x
         ## metasfresh-app images.
         path: /opt/metasfresh/reports/de/metas/kommunikativ
