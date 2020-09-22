@@ -1,0 +1,151 @@
+## kommunikativch metasfresh-app image version
+## ref: https://cloud.docker.com/repository/docker/kommunikativch/metasfresh-app/tags
+##
+app:
+  replicas: 1
+  image:
+    registry: docker.io
+    repository: kommunikativch/metasfresh-app
+    tag: "5.145.1-11-kommch"
+    ## Specify a imagePullPolicy
+    ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+    ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+    ##
+    pullPolicy: Always
+    ## Optionally specify an array of imagePullSecrets.
+    ## Secrets must be manually created in the namespace.
+    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+    ##
+    pullSecrets:
+      - kommunikativch-dockerhub
+
+  podLabels: {}
+  ## app resource requests and limits
+  ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+  # resources:
+  #   requests:
+  #     memory: 256Mi
+  #     cpu: 100m
+
+  ## app Node labels and tolerations for pod assignment
+  ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector
+  ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#taints-and-tolerations-beta-feature
+  # nodeSelector: {"beta.kubernetes.io/arch": "amd64"}
+  # tolerations: []
+  ## metasfresh-app pod annotations
+  podAnnotations: {}
+
+  port: 8282
+  portActivemq: 61616
+  portDebug: 8788
+  portReportsFtp: 22
+  persistence:
+    enabled: true
+    log:
+
+      ## The path the volume will be mounted at, useful when using different
+      ## metasfresh-app images.
+      path: /opt/metasfresh/log
+
+      ## The subdirectory of the volume to mount to, useful in dev environments and one PV for multiple services.
+      subPath: app/log
+
+      ## db data Persistent Volume Storage Class
+      ## If defined, storageClassName: <storageClass>
+      ## If set to "-", storageClassName: "", which disables dynamic provisioning
+      ## If undefined (the default) or set to null, no storageClassName spec is
+      ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+      ##   GKE, AWS & OpenStack)
+      ##
+      storageClass: ""
+      accessModes:
+      - ReadWriteOnce
+      size: 10Gi
+      volumeName: ""
+    reports:
+      custom:
+        ## The path the volume will be mounted at, useful when using different
+        ## metasfresh-app images.
+        path: /opt/metasfresh/reports/de/metas/custom
+
+        ## The subdirectory of the volume to mount to, useful in dev environments and one PV for multiple services.
+        subPath: app/reports/custom/de/metas/custom
+      kommunikativ:
+        ## The path the volume will be mounted at, useful when using different x
+        ## metasfresh-app images.
+        path: /opt/metasfresh/reports/de/metas/kommunikativ
+
+        ## The subdirectory of the volume to mount to, useful in dev environments and one PV for multiple services.
+        subPath: app/reports/kommunikativ/de/metas/kommunikativ
+
+      ## db data Persistent Volume Storage Class
+      ## If defined, storageClassName: <storageClass>
+      ## If set to "-", storageClassName: "", which disables dynamic provisioning
+      ## If undefined (the default) or set to null, no storageClassName spec is
+      ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+      ##   GKE, AWS & OpenStack)
+      ##
+      storageClass: ""
+      accessModes:
+      - ReadWriteOnce
+      size: 10Gi
+      volumeName: ""
+  transfer:
+    enabled: false
+    image:
+      registry: docker.io
+      repository: kommunikativch/metasfresh-transfer
+      tag: "5.145.1-11-kommch"
+      ## Specify a imagePullPolicy
+      ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+      ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+      ##
+      pullPolicy: Always
+      ## Optionally specify an array of imagePullSecrets.
+      ## Secrets must be manually created in the namespace.
+      ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+      ##
+      pullSecrets:
+        - kommunikativch-dockerhub
+  reports:
+    enabled: true
+    image:
+      registry: docker.io
+      repository: kommunikativch/metasfresh-reports
+      tag: "5.145.1-11-kommch"
+      ## Specify a imagePullPolicy
+      ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+      ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+      ##
+      pullPolicy: Always
+      ## Optionally specify an array of imagePullSecrets.
+      ## Secrets must be manually created in the namespace.
+      ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+      ##
+      pullSecrets:
+        - kommunikativch-dockerhub
+    reports:
+      custom:
+        ## The path the volume will be mounted at, useful when using different
+        ## metasfresh-app images.
+        path: /home/reports/custom
+
+        ## The subdirectory of the volume to mount to, useful in dev environments and one PV for multiple services.
+        subPath: app/reports/custom
+        repository: "https://github.com/KommunikativCh/KommunikativCh.Reports-metasfresh-default"
+        gitCredentials: "https://KommunikativCh:TOKEN@github.com"
+
+      kommunikativ:
+        ## The path the volume will be mounted at, useful when using different
+        ## metasfresh-app images.
+        path: /home/reports/kommunikativ
+
+        ## The subdirectory of the volume to mount to, useful in dev environments and one PV for multiple services.
+        subPath: app/reports/kommunikativ
+        repository: "https://github.com/KommunikativCh/KommunikativCh.Reports-metasfresh-prod"
+        gitCredentials: "https://KommunikativCh:TOKEN@github.com"
+
+    sftpUsers: reports:reports:1020:100:opt/metasfresh
+  debug: "false"
+  dbExtHost: "db"
+  appExtHost: "app"
